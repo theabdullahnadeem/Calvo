@@ -1,0 +1,567 @@
+{
+  "_meta": {
+    "note": "Single source of truth for all Calvo site copy. Every user-facing English string on the site is read from this file through lib/content.ts. Components must not hardcode copy. Originates from docs/01-info.json; the 'brand', 'verticals', 'productPillars', 'howItWorks', 'cta', 'contact', 'brandVoice' and 'design' keys are preserved verbatim from that file, with site-specific copy added alongside.",
+    "sourceDoc": "docs/01-info.json"
+  },
+
+  "brand": {
+    "name": "Calvo",
+    "formerName": "Digivixo",
+    "domain": "getcalvo.com",
+    "tagline": "AI voice agents, built for how your business actually runs.",
+    "shortDescription": "Calvo builds custom-trained AI calling agents for businesses that can't afford to miss a call.",
+    "longDescription": "Calvo provides AI-powered voice agents that answer, qualify, and route calls for businesses — trained specifically on how each business actually operates, not a generic script. Every agent is built around the client's real workflows, tone, and edge cases.",
+    "positioning": {
+      "core": "vertical-neutral, category-level: AI calling infrastructure for any business",
+      "proofLayer": "vertical-specific case studies and landing pages carry the specialized language",
+      "doNotDo": "do not bake a single industry's visual or verbal identity into the core brand"
+    }
+  },
+
+  "verticals": {
+    "primary": {
+      "name": "CPA & Accounting Firms",
+      "slug": "for-cpa-firms",
+      "status": "strongest traction, flagship case study",
+      "shortName": "CPA firms",
+      "painPoints": [
+        "Missed calls during tax season peak volume",
+        "Front desk staff overwhelmed with routine scheduling/status calls",
+        "Client trust requires professional, accurate call handling — no room for a bad AI experience"
+      ],
+      "proofPoint": {
+        "metric": "missed call rate reduced from 32% to 5%",
+        "metric2": "13% revenue lift"
+      },
+      "meta": {
+        "title": "AI Calling Agents for CPA & Accounting Firms — Calvo",
+        "description": "Calvo answers every client call for accounting firms, trained on your services, your deadlines, and the questions your clients actually ask."
+      },
+      "hero": {
+        "eyebrow": "For CPA & accounting firms",
+        "headline": "Your firm stops losing calls at the worst time of year.",
+        "subheadline": "Calvo answers, qualifies, and routes client calls with the accuracy your clients expect — trained on how your firm actually works."
+      },
+      "painPointsHeading": "What firm partners tell us",
+      "proofHeading": "What changed for this firm.",
+      "stats": [
+        {
+          "label": "Missed call rate",
+          "from": 32,
+          "to": 5,
+          "suffix": "%",
+          "caption": "Before Calvo, after Calvo"
+        },
+        {
+          "label": "Revenue lift",
+          "from": 0,
+          "to": 13,
+          "suffix": "%",
+          "prefix": "+",
+          "caption": "Attributed to recovered calls"
+        }
+      ]
+    },
+    "secondary": [
+      {
+        "name": "Restaurants",
+        "slug": "for-restaurants",
+        "status": "active vertical",
+        "shortName": "Restaurants",
+        "painPoints": [
+          "Missed reservation calls during dinner rush",
+          "Staff can't answer phone and serve tables simultaneously",
+          "Orders and reservations need accurate, fast handling"
+        ],
+        "meta": {
+          "title": "AI Calling Agents for Restaurants — Calvo",
+          "description": "Calvo takes reservation and order calls through your busiest service, so your staff can stay on the floor."
+        },
+        "hero": {
+          "eyebrow": "For restaurants",
+          "headline": "The phone stops competing with your dining room.",
+          "subheadline": "Calvo takes reservations and answers questions through the dinner rush — trained on your menu, your hours, and how you seat."
+        },
+        "painPointsHeading": "What restaurant owners tell us"
+      },
+      {
+        "name": "Cafes",
+        "slug": "for-cafes",
+        "status": "active vertical, closely related to restaurants",
+        "shortName": "Cafes",
+        "painPoints": [
+          "Similar to restaurants — high call volume during peak hours, small staff"
+        ],
+        "meta": {
+          "title": "AI Calling Agents for Cafes — Calvo",
+          "description": "Calvo answers order, hours, and catering calls during your morning rush, so a small team isn't picking up the phone mid-pour."
+        },
+        "hero": {
+          "eyebrow": "For cafes",
+          "headline": "A two-person team can't work the bar and the phone.",
+          "subheadline": "Calvo picks up during the rush — orders, hours, catering questions — trained on your menu and how you actually run the counter."
+        },
+        "painPointsHeading": "What cafe owners tell us"
+      },
+      {
+        "name": "General Service Businesses",
+        "slug": "for-businesses",
+        "status": "broad catch-all — companies not yet fitting a dedicated vertical page",
+        "shortName": "Service businesses",
+        "painPoints": [
+          "Any business losing revenue to missed or poorly handled inbound calls"
+        ],
+        "meta": {
+          "title": "AI Calling Agents for Service Businesses — Calvo",
+          "description": "Calvo answers, qualifies, and routes inbound calls for service businesses, custom-trained on your services, hours, and pricing logic."
+        },
+        "hero": {
+          "eyebrow": "For service businesses",
+          "headline": "Every inbound call gets answered.",
+          "subheadline": "If your business runs on the phone, Calvo makes sure the phone runs — custom-trained on your services, your hours, your edge cases."
+        },
+        "painPointsHeading": "What business owners tell us"
+      }
+    ]
+  },
+
+  "productPillars": [
+    {
+      "title": "Trained on your business, not a generic script",
+      "description": "Every Calvo agent is custom-built around how your business actually operates — your services, your tone, your edge cases."
+    },
+    {
+      "title": "Never misses a call",
+      "description": "Calvo answers instantly, every time, regardless of call volume or time of day."
+    },
+    {
+      "title": "Sounds like your business, not a robot",
+      "description": "Natural, low-latency voice conversations that don't feel like an IVR menu."
+    },
+    {
+      "title": "Full visibility",
+      "description": "Every call is logged, transcribed, and reportable through a dashboard your team actually checks."
+    }
+  ],
+
+  "howItWorks": [
+    {
+      "step": "Tell us how your business runs",
+      "description": "We learn your services, hours, pricing logic, and the specific questions your callers actually ask."
+    },
+    {
+      "step": "We build and train your agent",
+      "description": "Your Calvo agent is custom-configured — not a shared template — and tested against real call scenarios before it goes live."
+    },
+    {
+      "step": "Calvo answers, every call",
+      "description": "Your agent handles inbound calls 24/7, escalating to a human exactly when it should."
+    },
+    {
+      "step": "You see everything",
+      "description": "Transcripts, call outcomes, and performance are all visible in your dashboard."
+    }
+  ],
+
+  "cta": {
+    "primary": "Book a demo",
+    "secondary": "See how it works"
+  },
+
+  "pricing": {
+    "_note": "Live commercial terms as supplied. Thousands separators normalised across the three tiers ($1000 -> $1,000, 5600 -> 5,600, 8150 -> 8,150) so the figures align typographically; the amounts themselves are unchanged.",
+    "eyebrow": "Pricing",
+    "heading": "Priced by how much of your phone we answer.",
+    "support": "Start on a pilot. Move to the plan that matches your call volume once it has earned it.",
+    "minutesLabel": "Included",
+    "popularLabel": "Most popular",
+    "ctaLabel": "Book a demo",
+    "customHeading": "Something else entirely?",
+    "customBody": "High call volume, several locations, or a workflow none of this covers — tell us how it runs and we will quote it.",
+    "tiers": [
+      {
+        "name": "Pilot",
+        "description": "Start here",
+        "badge": "Best for first-timers",
+        "price": "$1,000",
+        "period": "/ month",
+        "minutes": "3,000 minutes included",
+        "features": [
+          "30-day risk-free pilot",
+          "Full refund guarantee",
+          "24/7 AI coverage",
+          "Custom agent training",
+          "Real-time CRM sync"
+        ],
+        "popular": false,
+        "ctaText": "Start with a pilot",
+        "finePrint": "30-day pilot · Full refund if no measurable improvement"
+      },
+      {
+        "name": "Standard",
+        "description": "After your pilot",
+        "price": "$1,700",
+        "period": "/ month",
+        "minutes": "5,600 minutes included",
+        "features": [
+          "Real-time dashboard",
+          "24/7 AI coverage",
+          "Weekly optimization",
+          "48hr setup",
+          "Custom agent training"
+        ],
+        "popular": false
+      },
+      {
+        "name": "Pro",
+        "description": "After your pilot",
+        "badge": "★ Peak Season",
+        "price": "$2,500",
+        "period": "/ month",
+        "minutes": "8,150 minutes included",
+        "features": [
+          "Everything in Standard",
+          "Priority support",
+          "Spike season ready",
+          "Rotate back anytime"
+        ],
+        "popular": true
+      }
+    ]
+  },
+
+  "contact": {
+    "email": "hello@getcalvo.com"
+  },
+
+  "brandVoice": {
+    "tone": "confident, plain-spoken, no hype-speak, no exclamation points, no 'revolutionize/game-changing' language",
+    "vocabularyRules": [
+      "Name things by what the business owner controls, not how the system works internally",
+      "Active voice",
+      "No filler adjectives — specific over clever"
+    ]
+  },
+
+  "design": {
+    "wordmark": "lowercase 'calvo', grotesque sans-serif (the delivered artwork reads neo-grotesque rather than the geometric described in docs/01-info.json)",
+    "colorPalette": {
+      "primary": "#0B0E11 (near-black / charcoal)",
+      "background": "#FAFAF8 (off-white)",
+      "accent": "#3E846B (forest green) — sampled from the square in the delivered brand mark, superseding the 'TBD placeholder' note in docs/01-info.json",
+      "accentOnPaper": "#2F6B56 — derived, meets AA as text on #FAFAF8",
+      "accentOnInk": "#6FB699 — derived, meets AA as text on #0B0E11"
+    },
+    "iconStatus": "final artwork supplied — an open ring with a green square in the notch, not the audio-waveform placeholder described in docs/01-info.json. Source rasters in public/assets/logo/; the site renders a measured vector reproduction from components/ui/LogoMark.tsx",
+    "assets": {
+      "lockup": "public/assets/logo/calvo-lockup.png",
+      "mark": "public/assets/logo/calvo-mark.png",
+      "wordmark": "public/assets/logo/calvo-wordmark.png",
+      "appIcon": "public/assets/logo/calvo-app-icon.png",
+      "derivedVector": "public/assets/logo/calvo-icon.svg",
+      "derivedWordmarkMask": "public/assets/logo/calvo-wordmark-mask.png"
+    }
+  },
+
+  "site": {
+    "meta": {
+      "titleDefault": "Calvo — AI Calling Agents for Every Business",
+      "titleTemplate": "%s",
+      "description": "Calvo builds custom-trained AI calling agents that answer, qualify, and route every inbound call — built around how your business actually runs.",
+      "ogAlt": "Calvo — AI calling agents, custom-trained per business.",
+      "locale": "en_US"
+    },
+    "nav": {
+      "links": [
+        { "label": "How it works", "href": "/#how-it-works" },
+        { "label": "What you get", "href": "/#what-you-get" },
+        { "label": "Results", "href": "/#results" },
+        { "label": "Pricing", "href": "/#pricing" }
+      ],
+      "industriesLabel": "Industries",
+      "menuOpenLabel": "Open menu",
+      "menuCloseLabel": "Close menu",
+      "skipToContent": "Skip to main content"
+    },
+    "footer": {
+      "wordmarkNote": "AI calling agents, custom-trained per business.",
+      "industriesHeading": "Industries",
+      "companyHeading": "Company",
+      "contactHeading": "Get in touch",
+      "formerNameLine": "Calvo was formerly Digivixo.",
+      "rightsLine": "All rights reserved.",
+      "backToTop": "Back to top",
+      "legalHeading": "Legal"
+    },
+    "sections": {
+      "hero": {
+        "eyebrow": "AI calling agents",
+        "scrollCue": "Scroll"
+      },
+      "problem": {
+        "eyebrow": "The cost of a ringing phone",
+        "statement": "Every missed call is a customer who called someone else.",
+        "support": "Phones ring hardest exactly when your team has the least room to answer them. The calls you don't pick up don't wait — they go to whoever does.",
+        "ticker": [
+          "Ring",
+          "Ring",
+          "Voicemail",
+          "Ring",
+          "Ring",
+          "Ring",
+          "Missed",
+          "Ring",
+          "Ring",
+          "Voicemail",
+          "Ring",
+          "Missed"
+        ]
+      },
+      "howItWorks": {
+        "eyebrow": "How it works",
+        "heading": "Four steps to an agent that knows your business.",
+        "stepLabel": "Step",
+        "progressLabel": "Setup progress"
+      },
+      "pillars": {
+        "eyebrow": "What you get",
+        "heading": "Built around your operation, not a template.",
+        "support": "Four things every Calvo agent does, whatever business it answers for."
+      },
+      "marquee": {
+        "items": [
+          "Answers on the first ring",
+          "Trained on your business",
+          "Never on hold",
+          "Books while you work",
+          "Escalates when it should",
+          "Every call accounted for"
+        ]
+      },
+      "proof": {
+        "eyebrow": "Real result",
+        "clientLabel": "CPA firm client",
+        "heading": "One client example.",
+        "framing": "These are one client's numbers, not a category claim. Calvo works the same way for restaurants, cafes, and service businesses — the agent gets rebuilt around each one.",
+        "linkLabel": "Read the CPA firm breakdown"
+      },
+      "cta": {
+        "eyebrow": "Next step",
+        "heading": "See it answer your phone.",
+        "support": "A short call, a look at how your agent would handle your real callers, and a straight answer on whether Calvo fits.",
+        "emailLabel": "Or email us"
+      },
+      "verticalPages": {
+        "painPointsEyebrow": "The problem",
+        "otherIndustriesHeading": "Calvo also answers for",
+        "backToHomeLabel": "Calvo works for any business"
+      }
+    }
+  },
+
+  "legal": {
+    "_note": "Drafted as a working template for a B2B AI voice-agent business. It has NOT been reviewed by a lawyer, and several items are placeholders that must be settled before launch: the registered legal entity name, the governing jurisdiction, the subprocessor list, and the retention periods. The `reviewNotice` below renders visibly on both pages — delete that one key once counsel has signed the text off.",
+    "reviewNotice": "Draft for review. This text has not been reviewed by legal counsel and is not yet binding.",
+    "lastUpdatedLabel": "Last updated",
+    "lastUpdated": "2 August 2026",
+    "contactHeading": "Questions",
+    "contactBody": "Write to us and we will answer.",
+
+    "privacy": {
+      "slug": "privacy",
+      "navLabel": "Privacy policy",
+      "eyebrow": "Legal",
+      "title": "Privacy policy",
+      "meta": {
+        "title": "Privacy Policy — Calvo",
+        "description": "How Calvo collects, uses, stores, and shares information, including call recordings and transcripts handled by our AI calling agents."
+      },
+      "intro": "This policy explains what Calvo collects, why we collect it, and what we do with it. It covers our website and the AI calling agents we build and operate for our clients.",
+      "sections": [
+        {
+          "heading": "Who we are",
+          "body": [
+            "Calvo builds and operates custom-trained AI voice agents that answer, qualify, and route inbound calls for businesses. Calvo was formerly known as Digivixo.",
+            "For information collected through our own website and sales process, Calvo is the data controller. For call data processed on behalf of a client whose phone line we answer, Calvo acts as a processor and that client is the controller."
+          ]
+        },
+        {
+          "heading": "Information you give us",
+          "body": [
+            "When you book a demo or email us, we collect your name, email address, phone number, company name, and whatever else you choose to include in your message.",
+            "When you become a client, we collect the operational details needed to build your agent: your services, hours, pricing logic, escalation rules, and the questions your callers typically ask."
+          ]
+        },
+        {
+          "heading": "Information collected automatically",
+          "body": [
+            "Our website records standard technical data: IP address, browser and device type, pages visited, and referring page. We use this to keep the site working and to understand which pages are useful.",
+            "We do not run advertising trackers or sell website analytics data."
+          ]
+        },
+        {
+          "heading": "Call recordings and transcripts",
+          "body": [
+            "When a Calvo agent answers a call, we process the audio of that call in order to understand the caller and respond. Depending on the client's configuration, we may store the recording, a transcript, and structured metadata such as call time, duration, outcome, and whether the call was escalated to a person.",
+            "This data belongs to the client whose line the agent answers. We process it only to deliver and support the service, and to improve the accuracy of that client's own agent.",
+            "Recording and transcription are subject to the call-recording laws that apply where the caller and the business are located. Clients are responsible for ensuring appropriate notice and consent is given on their lines; we provide the configuration needed to do this."
+          ]
+        },
+        {
+          "heading": "How we use information",
+          "body": [
+            "To build, train, operate, and support the agent a client has engaged us for.",
+            "To respond to enquiries and provide customer support.",
+            "To monitor reliability, diagnose faults, and prevent abuse or fraud.",
+            "To meet legal, tax, and accounting obligations."
+          ]
+        },
+        {
+          "heading": "What we do not do",
+          "body": [
+            "We do not sell personal information.",
+            "We do not use one client's call data to train a shared or general-purpose model used for other clients."
+          ]
+        },
+        {
+          "heading": "Sharing and service providers",
+          "body": [
+            "We share information with the service providers that make the product work — telephony, speech processing, language model inference, cloud hosting, and error monitoring. Each is bound by contract to process data only on our instructions.",
+            "A current list of subprocessors is available to clients on request.",
+            "We may also disclose information where we are legally required to, or to protect our rights or the safety of others."
+          ]
+        },
+        {
+          "heading": "Retention",
+          "body": [
+            "Website enquiry data is kept for as long as needed to answer you and to keep a record of the relationship.",
+            "Call recordings, transcripts, and metadata are kept for the period agreed with each client, and are deleted or returned when the engagement ends. Clients can request earlier deletion at any time."
+          ]
+        },
+        {
+          "heading": "Security",
+          "body": [
+            "Data is encrypted in transit and at rest. Access is limited to the people who need it to run the service, and is logged.",
+            "No system is perfectly secure. If a breach affects your information, we will notify affected parties as required by law."
+          ]
+        },
+        {
+          "heading": "Your rights",
+          "body": [
+            "Depending on where you live, you may have the right to access, correct, delete, or export your personal information, to object to or restrict processing, and to complain to a supervisory authority.",
+            "To exercise any of these, email us. If your data was processed on behalf of one of our clients, we will refer the request to that client and support them in answering it."
+          ]
+        },
+        {
+          "heading": "Cookies",
+          "body": [
+            "This site uses only the cookies needed to serve and secure the pages. We do not set advertising or cross-site tracking cookies."
+          ]
+        },
+        {
+          "heading": "Children",
+          "body": [
+            "Calvo is a business service and is not directed at children. We do not knowingly collect information from anyone under 16."
+          ]
+        },
+        {
+          "heading": "Changes to this policy",
+          "body": [
+            "We will update this page when our practices change, and will revise the date at the top. Material changes affecting clients will be communicated directly."
+          ]
+        }
+      ]
+    },
+
+    "terms": {
+      "slug": "terms",
+      "navLabel": "Terms of service",
+      "eyebrow": "Legal",
+      "title": "Terms of service",
+      "meta": {
+        "title": "Terms of Service — Calvo",
+        "description": "The terms that govern use of the Calvo website and the AI calling agents Calvo builds and operates for its clients."
+      },
+      "intro": "These terms govern your use of the Calvo website and, where you engage us, the AI calling agents we build and operate for your business.",
+      "sections": [
+        {
+          "heading": "Agreement",
+          "body": [
+            "By using this website or engaging Calvo, you agree to these terms. If you are agreeing on behalf of a company, you confirm you are authorised to do so.",
+            "Where you have signed a separate written agreement or order form with Calvo, that document governs and these terms fill any gaps."
+          ]
+        },
+        {
+          "heading": "The service",
+          "body": [
+            "Calvo builds a voice agent configured around your business and operates it to answer your inbound calls. Scope, phone numbers, escalation rules, and reporting are agreed per engagement.",
+            "We may change how the service works over time. We will not materially reduce agreed functionality during a paid term without telling you."
+          ]
+        },
+        {
+          "heading": "Your responsibilities",
+          "body": [
+            "You are responsible for the accuracy of the operational information you give us — services, hours, pricing, and escalation rules. The agent answers based on what you tell us.",
+            "You are responsible for holding the rights to any phone numbers you ask us to answer, and for complying with the telecommunications and call-recording laws that apply to your business and your callers, including any notice or consent your jurisdiction requires.",
+            "You will keep account credentials secure and tell us promptly about any unauthorised use."
+          ]
+        },
+        {
+          "heading": "Acceptable use",
+          "body": [
+            "The service may not be used for unlawful, deceptive, or harassing activity; to impersonate a person or organisation you are not authorised to represent; to place unsolicited outbound calls in breach of applicable law; or to attempt to disrupt, reverse engineer, or gain unauthorised access to our systems."
+          ]
+        },
+        {
+          "heading": "Your data",
+          "body": [
+            "Call recordings, transcripts, and the operational information you provide remain yours. You grant Calvo the licence needed to process them in order to deliver and support the service.",
+            "How that data is handled is described in the privacy policy."
+          ]
+        },
+        {
+          "heading": "Fees",
+          "body": [
+            "Fees, billing frequency, and any usage-based charges are set out in your order form. Invoices are payable on the terms stated there.",
+            "Unless your agreement says otherwise, fees are exclusive of taxes."
+          ]
+        },
+        {
+          "heading": "Availability and AI output",
+          "body": [
+            "We work to keep the service available and accurate, but no telephony or AI system is perfect. Calls may occasionally be misrouted, misunderstood, or missed, and agent responses may be wrong.",
+            "The service is not a substitute for a person where a call is urgent, medical, legal, or safety-critical. Escalation rules exist for exactly this reason and you should configure them accordingly.",
+            "Except as expressly stated, the service is provided without warranties of any kind."
+          ]
+        },
+        {
+          "heading": "Limitation of liability",
+          "body": [
+            "To the extent permitted by law, neither party is liable for indirect, incidental, special, or consequential loss, or for lost profits, revenue, or goodwill.",
+            "Calvo's total liability arising out of the service is limited to the fees you paid to Calvo in the twelve months before the event giving rise to the claim.",
+            "Nothing here limits liability that cannot lawfully be limited."
+          ]
+        },
+        {
+          "heading": "Termination",
+          "body": [
+            "Either party may end an engagement on the notice set out in the order form. We may suspend the service immediately for non-payment or for a breach of the acceptable use section.",
+            "On termination we will stop answering your lines, return or delete your data as agreed, and hand back any numbers we hold on your behalf."
+          ]
+        },
+        {
+          "heading": "Changes to these terms",
+          "body": [
+            "We may update these terms. If a change materially affects an active engagement, we will give notice before it takes effect."
+          ]
+        },
+        {
+          "heading": "Governing law",
+          "body": [
+            "The governing law and the courts with jurisdiction are those stated in your order form."
+          ]
+        }
+      ]
+    }
+  }
+}

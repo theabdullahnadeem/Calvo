@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Favicon. Same geometry and proportions as public/assets/logo/calvo-app-icon.png
+       (mark at 58.4% of the canvas, corner radius 21.5%), drawn as vector so it
+       stays legible down to 16px where the raster goes mushy. -->
+  <rect width="100" height="100" rx="21.5" fill="#FAFAF8"/>
+  <g transform="translate(20.4 19.9) scale(0.584)">
+    <path
+      d="M52.4 0.058A50 50 0 1 0 99.806 45.6L79.473 45.6A29.8 29.8 0 1 1 52.4 20.297Z"
+      fill="#0B0E11"
+    />
+    <rect x="66.4" y="1.4" width="29.8" height="29.8" fill="#3E846B"/>
+  </g>
+</svg>

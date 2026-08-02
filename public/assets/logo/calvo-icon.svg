@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <title>Calvo</title>
+  <!--
+    Vector reproduction of the Calvo mark, measured from the supplied raster
+    lockup (public/assets/logo/calvo-app-icon.png):
+      outer radius 50, inner radius 29.8 (ring weight 20.2)
+      notch cut by a vertical edge at x=52.4 and a horizontal edge at y=45.6
+      square side 29.8, top-left at (66.4, 1.4)
+    Ratios are normalised from the 1254px source, where the measured values were
+    R_outer 365.5, R_inner 217.5, cuts at +17.5 and -32.5 from centre.
+  -->
+  <path
+    d="M52.4 0.058A50 50 0 1 0 99.806 45.6L79.473 45.6A29.8 29.8 0 1 1 52.4 20.297Z"
+    fill="#0B0E11"
+  />
+  <rect x="66.4" y="1.4" width="29.8" height="29.8" fill="#3E846B" />
+</svg>

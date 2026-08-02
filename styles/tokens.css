@@ -1,0 +1,107 @@
+/* ============================================================
+   Calvo — design tokens
+   Source of truth for colour, type scale, spacing and easing.
+   Values here are mirrored into tailwind.config.ts so utilities
+   and raw CSS never drift apart.
+   ============================================================ */
+
+:root {
+  /* ---------- surface + ink ----------
+     Locked per 02-design-brief.md. The page inverts by swapping
+     --bg / --fg on a section wrapper, never by re-declaring colours. */
+  --ink: #0b0e11; /* near-black / charcoal */
+  --paper: #fafaf8; /* off-white */
+  --ash: #6b7178; /* muted body copy on paper */
+  --ash-dim: #8f959c; /* muted body copy on ink */
+
+  /* ---------- accent ----------
+     Sampled from the square in the supplied brand mark
+     (public/assets/logo/calvo-app-icon.png, median of the flat interior).
+     This replaces the "TBD placeholder forest green" the spec was written
+     against — the delivered logo settles it.
+
+     --brand-green is the identity colour and never changes per surface: it is
+     what the logo square is painted with, and it must look the same everywhere.
+     To change the brand accent, change this ONE value; the per-surface text
+     accents below are derived from it. */
+  --brand-green: #3e846b;
+  --accent: var(--brand-green);
+
+  /* Per-surface accents, derived. The raw brand green only reaches 4.3:1 on
+     paper, which is short of AA for body-sized text, so each surface gets a
+     shifted version that clears 4.5:1 both as text on that surface and as a
+     fill carrying that surface's background colour. Static fallbacks first,
+     color-mix below, so the single-value swap above still propagates. */
+  --accent-on-paper: #2f6b56; /* 6.1:1 on #FAFAF8 */
+  --accent-on-ink: #6fb699; /* 7.9:1 on #0B0E11 */
+
+  /* ---------- semantic aliases (what components actually consume) ---------- */
+  --bg: var(--paper);
+  --fg: var(--ink);
+  --muted: var(--ash);
+  --accent-fg: var(--accent);
+  --line: rgba(11, 14, 17, 0.12);
+  --panel: rgba(11, 14, 17, 0.04);
+
+  /* ---------- type ----------
+     Fluid scale. Large type is a primary design tool here
+     (02-design-brief.md) — the display steps are deliberately big. */
+  --step--1: clamp(0.82rem, 0.79rem + 0.14vw, 0.9rem);
+  --step-0: clamp(1rem, 0.96rem + 0.2vw, 1.125rem);
+  --step-1: clamp(1.15rem, 1.05rem + 0.5vw, 1.5rem);
+  --step-2: clamp(1.4rem, 1.15rem + 1.2vw, 2.25rem);
+  --step-3: clamp(1.9rem, 1.4rem + 2.4vw, 3.25rem);
+  --step-4: clamp(2.4rem, 1.5rem + 4.4vw, 5rem);
+  --step-5: clamp(3rem, 1.4rem + 7.6vw, 8rem);
+  --step-6: clamp(3.6rem, 1rem + 11.4vw, 12rem);
+
+  --tracking-display: -0.035em;
+  --tracking-mono: 0.16em;
+  --leading-display: 0.92;
+
+  /* ---------- layout ---------- */
+  --gutter: clamp(20px, 5vw, 72px);
+  --measure: 62ch;
+  --max-w: 1600px;
+
+  /* ---------- motion ----------
+     Easing curves are shared between GSAP (via lib/gsap.ts) and CSS
+     so hover states and scroll timelines feel like one system. */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 0.24s;
+  --dur-base: 0.5s;
+  --dur-slow: 0.9s;
+}
+
+@supports (color: color-mix(in oklab, white, black)) {
+  :root {
+    --accent-on-paper: color-mix(in oklab, var(--accent) 84%, #0b0e11);
+    --accent-on-ink: color-mix(in oklab, var(--accent) 62%, #fafaf8);
+  }
+}
+
+/* Inverted surface. Applied to a section wrapper — every child that reads
+   the semantic aliases flips with it, including the accent. */
+.surface-ink {
+  --bg: var(--ink);
+  --fg: var(--paper);
+  --muted: var(--ash-dim);
+  --accent-fg: var(--accent-on-ink);
+  --line: rgba(250, 250, 248, 0.14);
+  --panel: rgba(250, 250, 248, 0.05);
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+.surface-paper {
+  --bg: var(--paper);
+  --fg: var(--ink);
+  --muted: var(--ash);
+  --accent-fg: var(--accent-on-paper);
+  --line: rgba(11, 14, 17, 0.12);
+  --panel: rgba(11, 14, 17, 0.04);
+  background-color: var(--bg);
+  color: var(--fg);
+}

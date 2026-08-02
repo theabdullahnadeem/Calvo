@@ -1,0 +1,126 @@
+{
+  "brand": {
+    "name": "Calvo",
+    "formerName": "Digivixo",
+    "domain": "getcalvo.com",
+    "tagline": "AI voice agents, built for how your business actually runs.",
+    "shortDescription": "Calvo builds custom-trained AI calling agents for businesses that can't afford to miss a call.",
+    "longDescription": "Calvo provides AI-powered voice agents that answer, qualify, and route calls for businesses — trained specifically on how each business actually operates, not a generic script. Every agent is built around the client's real workflows, tone, and edge cases.",
+    "positioning": {
+      "core": "vertical-neutral, category-level: AI calling infrastructure for any business",
+      "proofLayer": "vertical-specific case studies and landing pages carry the specialized language",
+      "doNotDo": "do not bake a single industry's visual or verbal identity into the core brand"
+    }
+  },
+
+  "verticals": {
+    "primary": {
+      "name": "CPA & Accounting Firms",
+      "slug": "for-cpa-firms",
+      "status": "strongest traction, flagship case study",
+      "painPoints": [
+        "Missed calls during tax season peak volume",
+        "Front desk staff overwhelmed with routine scheduling/status calls",
+        "Client trust requires professional, accurate call handling — no room for a bad AI experience"
+      ],
+      "proofPoint": {
+        "metric": "missed call rate reduced from 32% to 5%",
+        "metric2": "13% revenue lift"
+      }
+    },
+    "secondary": [
+      {
+        "name": "Restaurants",
+        "slug": "for-restaurants",
+        "status": "active vertical",
+        "painPoints": [
+          "Missed reservation calls during dinner rush",
+          "Staff can't answer phone and serve tables simultaneously",
+          "Orders and reservations need accurate, fast handling"
+        ]
+      },
+      {
+        "name": "Cafes",
+        "slug": "for-cafes",
+        "status": "active vertical, closely related to restaurants",
+        "painPoints": [
+          "Similar to restaurants — high call volume during peak hours, small staff"
+        ]
+      },
+      {
+        "name": "General Service Businesses",
+        "slug": "for-businesses",
+        "status": "broad catch-all — companies not yet fitting a dedicated vertical page",
+        "painPoints": [
+          "Any business losing revenue to missed or poorly handled inbound calls"
+        ]
+      }
+    ]
+  },
+
+  "productPillars": [
+    {
+      "title": "Trained on your business, not a generic script",
+      "description": "Every Calvo agent is custom-built around how your business actually operates — your services, your tone, your edge cases."
+    },
+    {
+      "title": "Never misses a call",
+      "description": "Calvo answers instantly, every time, regardless of call volume or time of day."
+    },
+    {
+      "title": "Sounds like your business, not a robot",
+      "description": "Natural, low-latency voice conversations that don't feel like an IVR menu."
+    },
+    {
+      "title": "Full visibility",
+      "description": "Every call is logged, transcribed, and reportable through a dashboard your team actually checks."
+    }
+  ],
+
+  "howItWorks": [
+    {
+      "step": "Tell us how your business runs",
+      "description": "We learn your services, hours, pricing logic, and the specific questions your callers actually ask."
+    },
+    {
+      "step": "We build and train your agent",
+      "description": "Your Calvo agent is custom-configured — not a shared template — and tested against real call scenarios before it goes live."
+    },
+    {
+      "step": "Calvo answers, every call",
+      "description": "Your agent handles inbound calls 24/7, escalating to a human exactly when it should."
+    },
+    {
+      "step": "You see everything",
+      "description": "Transcripts, call outcomes, and performance are all visible in your dashboard."
+    }
+  ],
+
+  "cta": {
+    "primary": "Book a demo",
+    "secondary": "See how it works"
+  },
+
+  "contact": {
+    "email": "hello@getcalvo.com"
+  },
+
+  "brandVoice": {
+    "tone": "confident, plain-spoken, no hype-speak, no exclamation points, no 'revolutionize/game-changing' language",
+    "vocabularyRules": [
+      "Name things by what the business owner controls, not how the system works internally",
+      "Active voice",
+      "No filler adjectives — specific over clever"
+    ]
+  },
+
+  "design": {
+    "wordmark": "lowercase 'calvo', geometric sans-serif",
+    "colorPalette": {
+      "primary": "#0B0E11 (near-black / charcoal)",
+      "background": "#FAFAF8 (off-white)",
+      "accent": "TBD — placeholder used forest green, not yet confirmed as final brand color"
+    },
+    "iconStatus": "not final — current asset is a generic audio-waveform mark, flagged for redesign by a human designer before ship"
+  }
+}
