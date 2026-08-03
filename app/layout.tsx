@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Inter, Inter_Tight, JetBrains_Mono } from 'next/font/google';
+import Script from 'next/script';
 import './globals.css';
 import { brand, site } from '@/lib/content';
 import { SITE_URL } from '@/lib/constants';
@@ -115,6 +116,19 @@ export default function RootLayout({
         <script dangerouslySetInnerHTML={{ __html: BOOTSTRAP }} />
       </head>
       <body className="surface-paper antialiased">
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-8VK1GRS0MR"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-8VK1GRS0MR');
+          `}
+        </Script>
         <Preloader />
 
         <a className="skip-link" href="#main">

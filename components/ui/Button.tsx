@@ -80,13 +80,13 @@ export function Button({
     const external = href.startsWith('http') || href.startsWith('mailto:');
     if (external) {
       return (
-        <a href={href} className={classes}>
+        <a href={href} className={classes} onClick={onClick}>
           {content}
         </a>
       );
     }
     return (
-      <Link href={href} className={classes}>
+      <Link href={href} className={classes} onClick={onClick}>
         {content}
       </Link>
     );

@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { allVerticals, cta, site } from '@/lib/content';
+import { useGsapContext } from '@/components/motion/useGsapContext';
 import Logo from '@/components/ui/Logo';
 import Button from '@/components/ui/Button';
 
@@ -27,6 +28,73 @@ export function Header() {
   const industriesRef = useRef<HTMLDivElement>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const menuRef = useRef<HTMLDivElement | null>(null);
+  const menuTlRef = useRef<gsap.core.Timeline | null>(null);
+  // Read inside the GSAP setup, which may resolve after a click has already
+  // toggled the state.
+  const openRef = useRef(open);
+  openRef.current = open;
+
+  /**
+   * Mobile menu choreography, following the pattern in
+   * docs/kinetik-v2.html: an ink curtain scales down from the top edge, the
+   * links slide up from behind their own masks in sequence while it is still
+   * arriving, then the surrounding chrome fades in.
+   *
+   * One paused timeline, played forward to open and reversed to close. Closing
+   * runs at 1.7x — the asymmetry is the point. An entrance should feel
+   * deliberate; a dismissal should feel immediate, and replaying the same
+   * curve at the same speed backwards makes leaving feel sluggish.
+   */
+  useGsapContext(menuRef, ({ gsap }, scope) => {
+    const bg = scope.querySelector('[data-menu-bg]');
+    const lines = scope.querySelectorAll('[data-menu-link] > span');
+    const tail = scope.querySelectorAll('[data-menu-tail]');
+
+    const tl = gsap
+      .timeline({ paused: true })
+      .set(scope, { visibility: 'visible' })
+      .to(bg, { scaleY: 1, duration: 0.85, ease: 'expo.inOut' })
+      // Both `y` and `yPercent` on both ends. The hidden state is a CSS
+      // `translateY(118%)`, and getComputedStyle resolves that percentage to
+      // pixels before GSAP ever sees it — so GSAP reads y=116px/yPercent=0 and
+      // tweening yPercent alone leaves the pixel offset untouched, stranding
+      // every link at exactly half travel. Declaring both channels puts GSAP in
+      // charge of the whole transform.
+      .fromTo(
+        lines,
+        { yPercent: 118, y: 0 },
+        { yPercent: 0, y: 0, duration: 0.85, stagger: 0.06, ease: 'expo.out' },
+        '-=0.42',
+      )
+      .fromTo(tail, { opacity: 0 }, { opacity: 1, duration: 0.5 }, '-=0.5');
+
+    menuTlRef.current = tl;
+
+    // The timeline is built asynchronously with GSAP, so honour a menu that was
+    // already opened while the library was still downloading.
+    if (openRef.current) tl.play();
+
+    return () => {
+      menuTlRef.current = null;
+    };
+  }, []);
+
+  useEffect(() => {
+    const tl = menuTlRef.current;
+    // No timeline means reduced motion or GSAP not yet loaded. CSS keys the
+    // menu's visibility off `data-open` in that case, so it still opens.
+    if (!tl) return;
+
+    if (open) {
+      tl.timeScale(1).play();
+    } else {
+      tl.timeScale(1.7).reverse();
+      tl.eventCallback('onReverseComplete', () => {
+        if (menuRef.current) menuRef.current.style.visibility = 'hidden';
+      });
+    }
+  }, [open]);
 
   useEffect(() => {
     const sections = document.querySelectorAll<HTMLElement>('[data-surface]');
@@ -214,20 +282,27 @@ export function Header() {
         </div>
       </header>
 
-      {/* Full-screen menu — small screens only. */}
+      {/* Full-screen menu — small screens only.
+          Not unmounted or `hidden` when closed: both would cut the closing
+          animation off at frame one. Visibility is owned by the timeline (and
+          by CSS via `data-open` when there is no timeline), and `inert` keeps
+          it out of the tab order the whole time it is not open. */}
       <div
-        className={[
-          'surface-ink fixed inset-0 z-[60] md:hidden',
-          'transition-[opacity,visibility] duration-500 ease-out-expo',
-          open ? 'visible opacity-100' : 'invisible opacity-0',
-        ].join(' ')}
+        ref={menuRef}
+        className="menu md:hidden"
+        data-open={open}
         role="dialog"
         aria-modal="true"
-        aria-label={site.nav.industriesLabel}
-        hidden={!open}
+        aria-label={site.nav.menuOpenLabel}
+        inert={!open}
       >
-        <div className="shell flex h-full flex-col justify-between py-4">
-          <div className="flex h-14 items-center justify-between">
+        <div data-menu-bg className="menu-bg" />
+
+        <div className="menu-in shell flex h-full flex-col justify-between py-4">
+          <div
+            data-menu-tail
+            className="flex h-14 flex-none items-center justify-between"
+          >
             <Logo size="md" />
             <button
               ref={closeButtonRef}
@@ -239,37 +314,48 @@ export function Header() {
             </button>
           </div>
 
-          <nav aria-label="Menu" className="flex flex-col gap-1 py-8">
+          <nav aria-label="Menu" className="flex flex-col py-8">
             {site.nav.links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="font-display text-step-3 tracking-display"
+                data-menu-link
+                className="menu-link font-display text-step-3 tracking-display"
               >
-                {link.label}
+                <span>{link.label}</span>
               </Link>
             ))}
 
-            <p className="eyebrow mt-8">{site.nav.industriesLabel}</p>
-            <ul className="mt-3 flex flex-col gap-2">
-              {allVerticals.map((vertical) => (
-                <li key={vertical.slug}>
-                  <Link
-                    href={`/${vertical.slug}`}
-                    onClick={() => setOpen(false)}
-                    className="text-[1.05rem] opacity-80"
-                  >
-                    {vertical.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <div data-menu-tail>
+              <p className="eyebrow mt-8">{site.nav.industriesLabel}</p>
+              <ul className="mt-3 flex flex-col gap-2">
+                {allVerticals.map((vertical) => (
+                  <li key={vertical.slug}>
+                    <Link
+                      href={`/${vertical.slug}`}
+                      onClick={() => setOpen(false)}
+                      className="text-[1.05rem] opacity-80"
+                    >
+                      {vertical.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </nav>
 
-          <Button href="/#book-a-demo" variant="primary" size="lg" className="w-full">
-            {cta.primary}
-          </Button>
+          <div data-menu-tail className="flex-none">
+            <Button
+              href="/#book-a-demo"
+              variant="primary"
+              size="lg"
+              className="w-full"
+              onClick={() => setOpen(false)}
+            >
+              {cta.primary}
+            </Button>
+          </div>
         </div>
       </div>
     </>

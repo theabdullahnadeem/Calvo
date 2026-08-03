@@ -141,6 +141,66 @@
     mask-composite: intersect;
   }
 
+  /* ---------- mobile menu ----------
+     Carries the ink token set so its contents theme correctly, but paints no
+     background of its own: the fill lives on .menu-bg, which is what scales in.
+     A background here would slam the whole overlay opaque on the first frame
+     and there would be nothing left for the curtain to do. */
+  .menu {
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    visibility: hidden;
+    --bg: var(--ink);
+    --fg: var(--paper);
+    --muted: var(--ash-dim);
+    --accent-fg: var(--accent-on-ink);
+    --line: rgba(250, 250, 248, 0.14);
+    --panel: rgba(250, 250, 248, 0.05);
+    color: var(--fg);
+  }
+
+  /* Without the animation layer there is no timeline to set visibility, so it
+     follows the open state directly and the menu still works. */
+  html:not(.anim-ready) .menu[data-open='true'] {
+    visibility: visible;
+  }
+
+  .menu-bg {
+    position: absolute;
+    inset: 0;
+    background: var(--ink);
+    transform-origin: 50% 0;
+    will-change: transform;
+  }
+  .anim-ready .menu-bg {
+    transform: scaleY(0);
+  }
+
+  .menu-in {
+    position: relative;
+    z-index: 1;
+    height: 100%;
+  }
+
+  /* Each link is its own mask; the inner span is what travels. */
+  .menu-link {
+    display: block;
+    overflow: hidden;
+    padding-bottom: 0.08em;
+    margin-bottom: -0.08em;
+  }
+  .menu-link > span {
+    display: block;
+    will-change: transform;
+  }
+  .anim-ready .menu-link > span {
+    transform: translateY(118%);
+  }
+  .anim-ready .menu [data-menu-tail] {
+    opacity: 0;
+  }
+
   /* ---------- cursor ----------
      One treatment for the whole site: `difference` blending inverts it against
      whatever is underneath, so it stays visible on both surfaces without being
