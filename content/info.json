@@ -27,14 +27,14 @@
       "painPoints": [
         "Missed calls during tax season peak volume",
         "Front desk staff overwhelmed with routine scheduling/status calls",
-        "Client trust requires professional, accurate call handling — no room for a bad AI experience"
+        "Client trust requires professional, accurate call handling no room for a bad AI experience"
       ],
       "proofPoint": {
         "metric": "missed call rate reduced from 32% to 5%",
         "metric2": "13% revenue lift"
       },
       "meta": {
-        "title": "AI Calling Agents for CPA & Accounting Firms — Calvo",
+        "title": "AI Calling Agents for CPA & Accounting Firms - Calvo",
         "description": "Calvo answers every client call for accounting firms, trained on your services, your deadlines, and the questions your clients actually ask."
       },
       "hero": {
@@ -74,7 +74,7 @@
           "Orders and reservations need accurate, fast handling"
         ],
         "meta": {
-          "title": "AI Calling Agents for Restaurants — Calvo",
+          "title": "AI Calling Agents for Restaurants - Calvo",
           "description": "Calvo takes reservation and order calls through your busiest service, so your staff can stay on the floor."
         },
         "hero": {
@@ -93,26 +93,26 @@
           "Similar to restaurants — high call volume during peak hours, small staff"
         ],
         "meta": {
-          "title": "AI Calling Agents for Cafes — Calvo",
+          "title": "AI Calling Agents for Cafes - Calvo",
           "description": "Calvo answers order, hours, and catering calls during your morning rush, so a small team isn't picking up the phone mid-pour."
         },
         "hero": {
           "eyebrow": "For cafes",
           "headline": "A two-person team can't work the bar and the phone.",
-          "subheadline": "Calvo picks up during the rush — orders, hours, catering questions — trained on your menu and how you actually run the counter."
+          "subheadline": "Calvo picks up during the rush orders, hours, catering questions trained on your menu and how you actually run the counter."
         },
         "painPointsHeading": "What cafe owners tell us"
       },
       {
         "name": "General Service Businesses",
         "slug": "for-businesses",
-        "status": "broad catch-all — companies not yet fitting a dedicated vertical page",
+        "status": "broad catch-all -companies not yet fitting a dedicated vertical page",
         "shortName": "Service businesses",
         "painPoints": [
           "Any business losing revenue to missed or poorly handled inbound calls"
         ],
         "meta": {
-          "title": "AI Calling Agents for Service Businesses — Calvo",
+          "title": "AI Calling Agents for Service Businesses - Calvo",
           "description": "Calvo answers, qualifies, and routes inbound calls for service businesses, custom-trained on your services, hours, and pricing logic."
         },
         "hero": {
@@ -265,10 +265,10 @@
 
   "site": {
     "meta": {
-      "titleDefault": "Calvo — AI Calling Agents for Every Business",
+      "titleDefault": "Calvo - AI Calling Agents",
       "titleTemplate": "%s",
       "description": "Calvo builds custom-trained AI calling agents that answer, qualify, and route every inbound call — built around how your business actually runs.",
-      "ogAlt": "Calvo — AI calling agents, custom-trained per business.",
+      "ogAlt": "Calvo - AI calling agents, custom-trained per business.",
       "locale": "en_US"
     },
     "nav": {
