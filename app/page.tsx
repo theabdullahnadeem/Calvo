@@ -1,6 +1,13 @@
 import type { Metadata } from 'next';
 import { site } from '@/lib/content';
 import { SITE_URL } from '@/lib/constants';
+import {
+  graph,
+  organizationSchema,
+  serviceSchema,
+  websiteSchema,
+} from '@/lib/schema';
+import JsonLd from '@/components/seo/JsonLd';
 import SectionDepth from '@/components/motion/SectionDepth';
 import Hero from '@/components/sections/Hero';
 import ProblemStatement from '@/components/sections/ProblemStatement';
@@ -37,6 +44,9 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
+      <JsonLd
+        data={graph(organizationSchema(), websiteSchema(), serviceSchema())}
+      />
       <Hero />
       <ProblemStatement />
       <HowItWorks />

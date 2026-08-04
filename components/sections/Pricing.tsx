@@ -182,6 +182,50 @@ export function Pricing() {
           ))}
         </ScrollReveal>
 
+        {/* Price justification. Reuses the pillar grid's hairline-and-type
+            treatment rather than introducing a card, so it reads as part of the
+            pricing block instead of a fifth section. Every claim here is an
+            inclusion already listed in the tiers above. */}
+        <ScrollReveal className="mt-16 border-t border-[var(--line)] pt-12 sm:mt-20">
+          <h3 className="max-w-[24ch] font-display text-step-2 font-medium tracking-display">
+            {p.managedHeading}
+          </h3>
+          <p className="mt-5 max-w-[58ch] text-[var(--muted)] text-step-0">
+            {p.managedBody}
+          </p>
+        </ScrollReveal>
+
+        <ScrollReveal
+          as="ul"
+          selector="[data-reveal]"
+          stagger={0.1}
+          start="top 82%"
+          y={30}
+          z={-140}
+          rotateX={10}
+          perspective={1100}
+          className="mt-12 grid gap-x-[clamp(2rem,5vw,4rem)] gap-y-10 md:grid-cols-2"
+        >
+          {p.managedItems.map((item) => (
+            <li key={item.title} data-reveal="3d">
+              <span
+                aria-hidden="true"
+                className="block h-px w-full bg-[var(--line)]"
+              />
+              <span
+                aria-hidden="true"
+                className="mt-[-1px] block h-px w-10 bg-[var(--accent-fg)]"
+              />
+              <h4 className="mt-6 max-w-[22ch] font-display text-step-1 font-medium tracking-display">
+                {item.title}
+              </h4>
+              <p className="mt-3 max-w-[44ch] text-[0.95rem] text-[var(--muted)]">
+                {item.body}
+              </p>
+            </li>
+          ))}
+        </ScrollReveal>
+
         <ScrollReveal className="mt-14 flex flex-col gap-6 border-t border-[var(--line)] pt-10 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <h3 className="font-display text-step-1 font-medium tracking-display">

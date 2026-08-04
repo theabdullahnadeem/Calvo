@@ -34,8 +34,8 @@
         "metric2": "13% revenue lift"
       },
       "meta": {
-        "title": "AI Calling Agents for CPA & Accounting Firms - Calvo",
-        "description": "Calvo answers every client call for accounting firms, trained on your services, your deadlines, and the questions your clients actually ask."
+        "title": "AI Receptionist for CPA Firms | Tax Season Call Answering - Calvo",
+        "description": "Calvo is an AI receptionist and answering service for accounting firms. Handle tax season call volume without adding front desk staff - trained on your services, deadlines, and the questions clients actually ask."
       },
       "hero": {
         "eyebrow": "For CPA & accounting firms",
@@ -74,8 +74,8 @@
           "Orders and reservations need accurate, fast handling"
         ],
         "meta": {
-          "title": "AI Calling Agents for Restaurants - Calvo",
-          "description": "Calvo takes reservation and order calls through your busiest service, so your staff can stay on the floor."
+          "title": "AI Receptionist for Restaurants | Reservation Answering Service - Calvo",
+          "description": "Calvo is an AI phone answering service for restaurants. It takes reservation and takeout order calls through the dinner rush, so your staff stay on the floor."
         },
         "hero": {
           "eyebrow": "For restaurants",
@@ -93,8 +93,8 @@
           "Similar to restaurants — high call volume during peak hours, small staff"
         ],
         "meta": {
-          "title": "AI Calling Agents for Cafes - Calvo",
-          "description": "Calvo answers order, hours, and catering calls during your morning rush, so a small team isn't picking up the phone mid-pour."
+          "title": "AI Receptionist for Cafes | Order & Catering Call Answering - Calvo",
+          "description": "Calvo is an AI phone answering service for cafes. It handles order, opening hours, and catering enquiry calls through the morning rush, so a small team isn't answering the phone mid-pour."
         },
         "hero": {
           "eyebrow": "For cafes",
@@ -112,8 +112,8 @@
           "Any business losing revenue to missed or poorly handled inbound calls"
         ],
         "meta": {
-          "title": "AI Calling Agents for Service Businesses - Calvo",
-          "description": "Calvo answers, qualifies, and routes inbound calls for service businesses, custom-trained on your services, hours, and pricing logic."
+          "title": "AI Receptionist & Virtual Answering Service for Small Business - Calvo",
+          "description": "Calvo is an AI receptionist for service businesses. It answers, qualifies, and routes every inbound call 24/7 - custom-trained on your services, hours, and pricing logic."
         },
         "hero": {
           "eyebrow": "For service businesses",
@@ -176,6 +176,26 @@
     "minutesLabel": "Included",
     "popularLabel": "Most popular",
     "ctaLabel": "Book a demo",
+    "managedHeading": "Why Calvo costs more than a chatbot subscription",
+    "managedBody": "Self-serve AI phone tools hand you a dashboard and leave the work to you. Calvo is run for you. Every item below is included in every plan, not sold as an add-on or billed as professional services.",
+    "managedItems": [
+      {
+        "title": "We build and configure the agent",
+        "body": "You do not write prompts, record greetings, or map call flows. We take your services, hours, pricing logic, and escalation rules and turn them into a working agent."
+      },
+      {
+        "title": "We own the CRM integration",
+        "body": "Calls, outcomes, and caller details sync to your CRM in real time. We set the integration up and we keep it working when your CRM or your process changes."
+      },
+      {
+        "title": "We keep tuning it after launch",
+        "body": "Weekly optimization against your real call outcomes, not a one-time setup you are then left to maintain yourself."
+      },
+      {
+        "title": "Telephony, hosting, and reporting are ours to run",
+        "body": "Numbers, call handling, transcripts, and the dashboard are all part of the service. There is no separate infrastructure bill and no per-seat licence."
+      }
+    ],
     "customHeading": "Something else entirely?",
     "customBody": "High call volume, several locations, or a workflow none of this covers — tell us how it runs and we will quote it.",
     "tiers": [

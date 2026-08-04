@@ -99,6 +99,11 @@ const infoSchema = z.object({
     popularLabel: z.string(),
     /** Fallback CTA label for tiers that don't set their own `ctaText`. */
     ctaLabel: z.string(),
+    managedHeading: z.string(),
+    managedBody: z.string(),
+    managedItems: z
+      .array(z.object({ title: z.string(), body: z.string() }))
+      .min(1),
     customHeading: z.string(),
     customBody: z.string(),
     tiers: z

@@ -1,5 +1,7 @@
 import { notFound } from 'next/navigation';
 import { content, getStatsForSlug, getVerticalBySlug } from '@/lib/content';
+import { breadcrumbSchema, graph, organizationSchema } from '@/lib/schema';
+import JsonLd from '@/components/seo/JsonLd';
 import SectionDepth from '@/components/motion/SectionDepth';
 import Hero from '@/components/sections/Hero';
 import PainPoints from '@/components/sections/PainPoints';
@@ -31,6 +33,15 @@ export function VerticalLanding({ slug }: { slug: string }) {
 
   return (
     <>
+      <JsonLd
+        data={graph(
+          organizationSchema(),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: vertical.name, path: `/${vertical.slug}` },
+          ]),
+        )}
+      />
       <Hero
         eyebrow={vertical.hero.eyebrow}
         headline={vertical.hero.headline}
