@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { allVerticals, cta, site } from '@/lib/content';
+import { allVerticals, contact, cta, site } from '@/lib/content';
 import { useGsapContext } from '@/components/motion/useGsapContext';
 import Logo from '@/components/ui/Logo';
 import Button from '@/components/ui/Button';
@@ -253,6 +253,16 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-3">
+            {/* Same ghost/primary pairing already used in the hero, at the
+                compact header sizing. Held back until lg so it never crowds
+                the nav on tablet widths. */}
+            <Button
+              href={contact.phoneHref}
+              variant="ghost"
+              className="hidden !px-5 !py-2.5 text-[0.85rem] lg:inline-flex"
+            >
+              {contact.phone}
+            </Button>
             <Button
               href="/#book-a-demo"
               variant="primary"
@@ -347,10 +357,19 @@ export function Header() {
 
           <div data-menu-tail className="flex-none">
             <Button
+              href={contact.phoneHref}
+              variant="ghost"
+              size="lg"
+              className="w-full"
+              onClick={() => setOpen(false)}
+            >
+              {contact.phone}
+            </Button>
+            <Button
               href="/#book-a-demo"
               variant="primary"
               size="lg"
-              className="w-full"
+              className="mt-3 w-full"
               onClick={() => setOpen(false)}
             >
               {cta.primary}

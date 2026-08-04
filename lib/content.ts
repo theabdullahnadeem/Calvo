@@ -120,7 +120,13 @@ const infoSchema = z.object({
       )
       .min(1),
   }),
-  contact: z.object({ email: z.string().email() }),
+  contact: z.object({
+    email: z.string().email(),
+    /** Display form. The visible number and `phoneHref` must stay in sync. */
+    phone: z.string(),
+    phoneHref: z.string().startsWith('tel:'),
+    phoneLabel: z.string(),
+  }),
   brandVoice: z.object({
     tone: z.string(),
     vocabularyRules: z.array(z.string()),

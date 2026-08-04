@@ -42,6 +42,12 @@ export function CTASection() {
             {cta.primary}
           </Button>
 
+          {/* Same ghost pairing as the hero — the caller who would rather just
+              dial gets an equal-weight route without a new pattern. */}
+          <Button href={contact.phoneHref} variant="ghost" size="lg">
+            {contact.phone}
+          </Button>
+
           <p className="text-[0.95rem] text-[var(--muted)]">
             {copy.emailLabel}{' '}
             <a

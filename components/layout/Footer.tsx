@@ -73,8 +73,14 @@ export function Footer() {
           <div>
             <h2 className="eyebrow eyebrow--bare">{f.contactHeading}</h2>
             <a
-              href={`mailto:${contact.email}`}
+              href={contact.phoneHref}
               className="mt-5 block w-fit font-display text-step-1 tracking-display underline-offset-[6px] hover:underline"
+            >
+              {contact.phone}
+            </a>
+            <a
+              href={`mailto:${contact.email}`}
+              className="mt-2 block w-fit font-display text-step-1 tracking-display underline-offset-[6px] hover:underline"
             >
               {contact.email}
             </a>

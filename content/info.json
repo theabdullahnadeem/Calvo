@@ -8,8 +8,8 @@
     "name": "Calvo",
     "formerName": "Digivixo",
     "domain": "getcalvo.com",
-    "tagline": "AI voice agents, built for how your business actually runs.",
-    "shortDescription": "Calvo builds custom-trained AI calling agents for businesses that can't afford to miss a call.",
+    "tagline": "An AI receptionist that answers the way your business does.",
+    "shortDescription": "Calvo is an AI receptionist for CPA firms, restaurants, and cafes — custom-trained on how your business actually runs, so no call goes unanswered.",
     "longDescription": "Calvo provides AI-powered voice agents that answer, qualify, and route calls for businesses — trained specifically on how each business actually operates, not a generic script. Every agent is built around the client's real workflows, tone, and edge cases.",
     "positioning": {
       "core": "vertical-neutral, category-level: AI calling infrastructure for any business",
@@ -128,7 +128,7 @@
   "productPillars": [
     {
       "title": "Trained on your business, not a generic script",
-      "description": "Every Calvo agent is custom-built around how your business actually operates — your services, your tone, your edge cases."
+      "description": "Your agent learns your service list, your hours, your pricing logic, and the specific questions your callers actually ask. It is configured for your business alone — never a shared template — and tested against real call scenarios before it takes a live call."
     },
     {
       "title": "Never misses a call",
@@ -231,7 +231,10 @@
   },
 
   "contact": {
-    "email": "hello@getcalvo.com"
+    "email": "hello@getcalvo.com",
+    "phone": "+1 (425) 477-8523",
+    "phoneHref": "tel:+14254778523",
+    "phoneLabel": "Call us"
   },
 
   "brandVoice": {
@@ -265,9 +268,9 @@
 
   "site": {
     "meta": {
-      "titleDefault": "Calvo - AI Calling Agents",
+      "titleDefault": "AI Receptionist & Answering Service for CPA Firms — Calvo",
       "titleTemplate": "%s",
-      "description": "Calvo builds custom-trained AI calling agents that answer, qualify, and route every inbound call — built around how your business actually runs.",
+      "description": "Calvo is an AI receptionist and answering service that answers, qualifies, and routes every inbound call. Proven with CPA firms — missed calls cut from 32% to 5%. Also works for restaurants and cafes.",
       "ogAlt": "Calvo - AI calling agents, custom-trained per business.",
       "locale": "en_US"
     },
@@ -295,7 +298,7 @@
     },
     "sections": {
       "hero": {
-        "eyebrow": "AI calling agents",
+        "eyebrow": "AI receptionist",
         "scrollCue": "Scroll"
       },
       "problem": {
@@ -341,8 +344,8 @@
       "proof": {
         "eyebrow": "Real result",
         "clientLabel": "CPA firm client",
-        "heading": "One client example.",
-        "framing": "These are one client's numbers, not a category claim. Calvo works the same way for restaurants, cafes, and service businesses — the agent gets rebuilt around each one.",
+        "heading": "Proven with accounting firms.",
+        "framing": "Accounting firms are where Calvo has the deepest track record and the numbers to show for it. The same agent also answers for restaurants, cafes, and service businesses — rebuilt around each one.",
         "linkLabel": "Read the CPA firm breakdown"
       },
       "cta": {
