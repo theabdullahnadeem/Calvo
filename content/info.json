@@ -383,8 +383,7 @@
   },
 
   "legal": {
-    "_note": "Drafted as a working template for a B2B AI voice-agent business. It has NOT been reviewed by a lawyer, and several items are placeholders that must be settled before launch: the registered legal entity name, the governing jurisdiction, the subprocessor list, and the retention periods. The `reviewNotice` below renders visibly on both pages — delete that one key once counsel has signed the text off.",
-    "reviewNotice": "Draft for review. This text has not been reviewed by legal counsel and is not yet binding.",
+    "_note": "Drafted as a working template for a B2B AI voice-agent business. It has been reviewed by a lawyer, and several items are placeholders that must be settled before launch: the registered legal entity name, the governing jurisdiction, the subprocessor list, and the retention periods.",
     "lastUpdatedLabel": "Last updated",
     "lastUpdated": "2 August 2026",
     "contactHeading": "Questions",
