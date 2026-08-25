@@ -47,6 +47,9 @@ export function VerticalLanding({ slug }: { slug: string }) {
         headline={vertical.hero.headline}
         subheadline={vertical.hero.subheadline}
         secondaryHref="#the-problem"
+        // The CPA-context transcript belongs here rather than on the homepage:
+        // 02-design-brief.md keeps vertical language off the core brand pages.
+        demoVariant={slug === content.verticals.primary.slug ? 'cpa' : 'neutral'}
       />
       <SectionDepth>
         <PainPoints vertical={vertical} />
