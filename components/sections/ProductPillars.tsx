@@ -3,6 +3,12 @@
 import { content, sections } from '@/lib/content';
 import ScrollReveal from '@/components/motion/ScrollReveal';
 import ParallaxLayer from '@/components/motion/ParallaxLayer';
+import dynamic from 'next/dynamic';
+
+/** Split for the same reason as the hero panel — see Hero.tsx. */
+const PillarVisual = dynamic(
+  () => import('@/components/dashboard/PillarVisual'),
+);
 
 /**
  * Section 4 — Product pillars.
@@ -13,12 +19,22 @@ import ParallaxLayer from '@/components/motion/ParallaxLayer';
  * otherwise straightforward grid content (05-animation-spec.md §4).
  *
  * No numbered markers — these four are not a sequence, and 02-design-brief.md
- * rules out numbering content that isn't. No card boxes either; hairline rules
- * and type do the separating.
+ * rules out numbering content that isn't.
+ *
+ * The pillar copy itself is still separated by hairline rules and type, not by
+ * a box. What changed is that each pillar now carries a dashboard view of the
+ * thing it describes, which is a deliberate reversal of the original "no card
+ * boxes" note: the frame belongs to the product screenshot, not to the text.
+ * See components/dashboard/PillarVisual.tsx for what each variant may depict —
+ * the list is constrained to capabilities info.json actually claims.
  */
 export function ProductPillars() {
   const copy = sections.pillars;
   const pillars = content.productPillars;
+  // One visual per pillar, matched by index. Zod guarantees both arrays exist;
+  // a short visuals array simply leaves later pillars as type-only, which is
+  // the pre-existing presentation and still correct.
+  const visuals = content.productDemo.pillarVisuals;
 
   // Alternating drift rates. Small on purpose — this should register as depth,
   // not as elements visibly sliding around.
@@ -91,6 +107,16 @@ export function ProductPillars() {
                   <p className="mt-4 max-w-[42ch] text-[var(--muted)] text-step-0">
                     {pillar.description}
                   </p>
+
+                  {/* The dashboard view for this pillar. It is a dark frame on
+                      a paper section on purpose — a product screenshot reads as
+                      a screenshot, and the ink/paper rhythm app/page.tsx sets up
+                      stays intact rather than the section going dark. */}
+                  {visuals[i] && (
+                    <div className="mt-8">
+                      <PillarVisual visual={visuals[i]} />
+                    </div>
+                  )}
                 </article>
               </ParallaxLayer>
             </li>

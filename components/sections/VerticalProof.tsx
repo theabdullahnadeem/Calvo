@@ -3,6 +3,12 @@
 import { content, sections, type Stat } from '@/lib/content';
 import ScrollReveal from '@/components/motion/ScrollReveal';
 import CountUp from '@/components/motion/CountUp';
+import dynamic from 'next/dynamic';
+
+/** Motion.dev stays out of the first load here too. */
+const StrikeThrough = dynamic(
+  () => import('@/components/motion/StrikeThrough'),
+);
 import Button from '@/components/ui/Button';
 
 type VerticalProofProps = {
@@ -90,11 +96,11 @@ export function VerticalProof({
                 {/* A non-zero start is a real "before" figure and stays visible.
                     A zero start is only the tween's origin, so it is not shown. */}
                 {stat.from !== 0 && (
-                  <span className="font-display text-step-2 tracking-display text-[var(--muted)] line-through decoration-[1.5px]">
+                  <StrikeThrough className="font-display text-step-2 tracking-display text-[var(--muted)]">
                     {stat.prefix ?? ''}
                     {stat.from}
                     {stat.suffix ?? ''}
-                  </span>
+                  </StrikeThrough>
                 )}
 
                 <CountUp

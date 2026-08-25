@@ -514,6 +514,31 @@
   transform: translate3d(0, var(--reveal-y, 24px), 0);
 }
 
+/* Motion.dev entrance states for the product mockups.
+
+   Same contract as [data-reveal] above, and for the same reason: the hidden
+   state is CSS gated on `.anim-ready`, never an SSR'd inline style. A crawler,
+   a no-JS visitor and a reduced-motion visitor all receive the transcript and
+   the call rows as plain visible markup.
+
+   The reveal itself is driven imperatively from an effect
+   (components/dashboard/useStaggerReveal.ts) with explicit keyframes, and the
+   inline style Motion writes then outranks this rule for the rest of the
+   element's life. Nothing needs to remove the attribute afterwards.
+
+   Do not try to replace this with a declarative `initial`/`animate` pair on a
+   motion component: with no target at mount Motion never writes a style, and
+   these rows stay invisible forever. */
+.anim-ready [data-mock-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 10px, 0);
+}
+
+/* The proof stat's strike rule starts undrawn only when it will be drawn. */
+.anim-ready [data-strike] {
+  transform: scaleX(0);
+}
+
 /* CSS 3D start state. Perspective is declared inside the element's own
    transform rather than on an ancestor, so no nested preserve-3d context is
    created and Safari has nothing to get wrong. GSAP animates the same channels

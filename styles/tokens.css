@@ -59,6 +59,24 @@
   --tracking-mono: 0.16em;
   --leading-display: 0.92;
 
+  /* ---------- elevation ----------
+     One ramp, shared by the product-mockup frames and the pricing cards, so a
+     raised panel looks the same wherever it appears. Three stacked shadows
+     each: a contact shadow to seat the edge, a mid shadow for the lift, and a
+     wide ambient one so the panel is not pasted flat onto the page.
+
+     Tuned for the paper surface. On .surface-ink these are near-invisible by
+     design — a dark panel on a dark ground separates with --line, not shadow. */
+  --elev-1: 0 1px 2px rgba(11, 14, 17, 0.06),
+    0 10px 28px -12px rgba(11, 14, 17, 0.14),
+    0 34px 70px -30px rgba(11, 14, 17, 0.18);
+  --elev-2: 0 1px 2px rgba(11, 14, 17, 0.1),
+    0 14px 36px -10px rgba(11, 14, 17, 0.2),
+    0 44px 90px -30px rgba(11, 14, 17, 0.28);
+  --elev-3: 0 2px 4px rgba(11, 14, 17, 0.12),
+    0 22px 52px -12px rgba(11, 14, 17, 0.26),
+    0 60px 120px -36px rgba(11, 14, 17, 0.34);
+
   /* ---------- layout ---------- */
   --gutter: clamp(20px, 5vw, 72px);
   --measure: 62ch;
