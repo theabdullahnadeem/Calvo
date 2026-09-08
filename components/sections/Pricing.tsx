@@ -87,6 +87,22 @@ export function Pricing() {
           </p>
         </ScrollReveal>
 
+        {/* One block per product. They are sold differently — self-configure
+            versus built-and-run — so each gets its own heading, its own CTA
+            target, and its own row rather than being flattened into a single
+            six-across ladder that would read as one escalating price list. */}
+        {p.groups.map((group) => (
+        <div key={group.id} id={`pricing-${group.id}`}>
+        <ScrollReveal className="mt-16 border-t border-[var(--line)] pt-10 sm:mt-20">
+          <p className="eyebrow">{group.label}</p>
+          <h3 className="mt-5 max-w-[22ch] font-display text-step-2 font-medium tracking-display">
+            {group.heading}
+          </h3>
+          <p className="mt-4 max-w-[56ch] text-[var(--muted)] text-step-0">
+            {group.body}
+          </p>
+        </ScrollReveal>
+
         <ScrollReveal
           as="ul"
           selector="[data-reveal]"
@@ -98,9 +114,9 @@ export function Pricing() {
           rotateY={(i) => (i - 1) * 8}
           perspective={1200}
           duration={1}
-          className="mt-16 grid gap-6 sm:mt-20 lg:grid-cols-3"
+          className="mt-10 grid gap-6 lg:grid-cols-3"
         >
-          {p.tiers.map((tier) => (
+          {group.tiers.map((tier) => (
             <li key={tier.name} data-reveal="3d" className="flex">
               <article
                 data-tier-card
@@ -132,9 +148,9 @@ export function Pricing() {
                   )}
                 </div>
 
-                <h3 className="mt-5 font-display text-step-2 font-medium tracking-display">
+                <h4 className="mt-5 font-display text-step-2 font-medium tracking-display">
                   {tier.name}
-                </h3>
+                </h4>
                 <p className="mt-1.5 text-[0.9rem] text-[var(--muted)]">
                   {tier.description}
                 </p>
@@ -168,12 +184,17 @@ export function Pricing() {
                   ))}
                 </ul>
 
+                {/* NOTE: for the self-configure group this is a sign-in link,
+                    NOT a purchase flow. Account provisioning is admin-side, so
+                    there is currently no path from "visitor with a card" to a
+                    live account. Pending a product decision — do not wire this
+                    to checkout until that is settled. */}
                 <Button
-                  href="/#book-a-demo"
+                  href={group.ctaHref}
                   variant={tier.popular ? 'primary' : 'ghost'}
                   className="mt-9 w-full"
                 >
-                  {tier.ctaText ?? p.ctaLabel}
+                  {tier.ctaText ?? group.ctaLabel}
                 </Button>
 
                 {tier.finePrint && (
@@ -185,6 +206,16 @@ export function Pricing() {
             </li>
           ))}
         </ScrollReveal>
+
+        {group.ctaNote && (
+          <ScrollReveal className="mt-6" y={14} duration={0.5}>
+            <p className="max-w-[56ch] text-[0.9rem] text-[var(--muted)]">
+              {group.ctaNote}
+            </p>
+          </ScrollReveal>
+        )}
+        </div>
+        ))}
 
         {/* Price justification. Reuses the pillar grid's hairline-and-type
             treatment rather than introducing a card, so it reads as part of the

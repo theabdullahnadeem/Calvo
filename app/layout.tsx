@@ -9,6 +9,7 @@ import Footer from '@/components/layout/Footer';
 import Preloader from '@/components/layout/Preloader';
 import SmoothScrollProvider from '@/components/layout/SmoothScrollProvider';
 import CustomCursor from '@/components/motion/CustomCursor';
+import ChatWidget from '@/components/chat/ChatWidget';
 
 /**
  * Self-hosted at build time by next/font — no render-blocking request to a
@@ -142,6 +143,8 @@ export default function RootLayout({
         <main id="main">{children}</main>
 
         <Footer />
+
+        <ChatWidget />
 
         <div className="grain" aria-hidden="true" />
       </body>

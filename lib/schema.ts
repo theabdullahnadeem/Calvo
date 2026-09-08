@@ -1,4 +1,4 @@
-import { brand, contact, content, site } from '@/lib/content';
+import { allTiers, brand, contact, content, site } from '@/lib/content';
 import { SITE_URL } from '@/lib/constants';
 
 /**
@@ -59,7 +59,7 @@ export function websiteSchema() {
  * internal product language.
  */
 export function serviceSchema() {
-  const tiers = content.pricing.tiers;
+  const tiers = allTiers;
   const amounts = tiers
     .map((t) => Number(t.price.replace(/[^0-9.]/g, '')))
     .filter((n) => Number.isFinite(n) && n > 0);
