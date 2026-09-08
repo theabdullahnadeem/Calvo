@@ -66,6 +66,28 @@ const legalDocSchema = z.object({
     .min(1),
 });
 
+const tierSchema = z.object({
+  name: z.string(),
+  description: z.string(),
+  /** Optional overline, e.g. seasonal or audience framing. */
+  badge: z.string().optional(),
+  price: z.string(),
+  period: z.string(),
+  minutes: z.string(),
+  features: z.array(z.string()).min(1),
+  /** Drives the recommended treatment - at most one tier per group sets it. */
+  popular: z.boolean(),
+  ctaText: z.string().optional(),
+  finePrint: z.string().optional(),
+});
+
+const faqSchema = z.object({
+  reviewNotice: z.string().optional(),
+  items: z.array(z.object({ q: z.string(), a: z.string() })).min(1),
+  /** Topics the chat widget must refuse and escalate rather than answer. */
+  outOfScope: z.array(z.string()).min(1),
+});
+
 const infoSchema = z.object({
   brand: z.object({
     name: z.string(),
@@ -106,25 +128,29 @@ const infoSchema = z.object({
       .min(1),
     customHeading: z.string(),
     customBody: z.string(),
-    tiers: z
+    /**
+     * Two separately-sold products, not a single ladder. The self-serve group is
+     * configured by the customer after purchase; the managed group is built and
+     * run by Calvo. They render as distinct blocks with their own heading and
+     * CTA precisely so the value props are never read as one continuum.
+     */
+    groups: z
       .array(
         z.object({
-          name: z.string(),
-          description: z.string(),
-          /** Optional overline, e.g. seasonal or audience framing. */
-          badge: z.string().optional(),
-          price: z.string(),
-          period: z.string(),
-          minutes: z.string(),
-          features: z.array(z.string()).min(1),
-          /** Drives the recommended treatment — at most one tier should set it. */
-          popular: z.boolean(),
-          ctaText: z.string().optional(),
-          finePrint: z.string().optional(),
+          id: z.string(),
+          label: z.string(),
+          heading: z.string(),
+          body: z.string(),
+          ctaLabel: z.string(),
+          ctaHref: z.string(),
+          /** Rendered under the group's tiers when present. */
+          ctaNote: z.string().nullable(),
+          tiers: z.array(tierSchema).min(1),
         }),
       )
-      .min(1),
+      .length(2),
   }),
+  faq: faqSchema,
   contact: z.object({
     email: z.string().email(),
     /** Display form. The visible number and `phoneHref` must stay in sync. */
@@ -232,6 +258,9 @@ const infoSchema = z.object({
 
 export type Info = z.infer<typeof infoSchema>;
 export type LegalDoc = z.infer<typeof legalDocSchema>;
+export type PricingTier = z.infer<typeof tierSchema>;
+export type PricingGroup = Info['pricing']['groups'][number];
+export type FaqItem = Info['faq']['items'][number];
 export type Vertical = z.infer<typeof verticalBaseSchema>;
 export type PrimaryVertical = z.infer<typeof primaryVerticalSchema>;
 export type Stat = z.infer<typeof statSchema>;
@@ -284,3 +313,11 @@ export function getStatsForSlug(slug: string): Stat[] | undefined {
 export function otherVerticals(slug: string): Vertical[] {
   return allVerticals.filter((v) => v.slug !== slug);
 }
+
+export const pricing = content.pricing;
+export const faq = content.faq;
+
+/** Every tier across both groups, for structured data and the chat corpus. */
+export const allTiers: PricingTier[] = content.pricing.groups.flatMap(
+  (g) => g.tiers,
+);
