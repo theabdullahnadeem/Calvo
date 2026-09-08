@@ -122,9 +122,13 @@ export function Pricing() {
                 data-tier-card
                 className={[
                   'flex w-full flex-col rounded-2xl border p-8 will-change-transform',
+                  // Same elevation ramp as the product-mockup frames. Only the
+                  // shadow and border transition: the tilt is GSAP's, and
+                  // animating transform here too would fight it.
+                  'transition-[box-shadow,border-color] duration-[var(--dur-base)] [transition-timing-function:var(--ease-out-quint)]',
                   tier.popular
-                    ? 'border-[var(--accent-fg)] bg-[var(--panel)] shadow-[0_30px_70px_-40px_rgba(11,14,17,0.5)]'
-                    : 'border-[var(--line)]',
+                    ? 'border-[var(--accent-fg)] bg-[var(--panel)] shadow-[var(--elev-2)] hover:shadow-[var(--elev-3)]'
+                    : 'border-[var(--line)] shadow-[var(--elev-1)] hover:border-[var(--accent-fg)]/40 hover:shadow-[var(--elev-3)]',
                 ].join(' ')}
               >
                 {/* Reserved whether or not this tier has a badge, so the three

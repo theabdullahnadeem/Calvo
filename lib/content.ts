@@ -88,6 +88,130 @@ const faqSchema = z.object({
   outOfScope: z.array(z.string()).min(1),
 });
 
+const transcriptLineSchema = z.object({
+  speaker: z.enum(['caller', 'agent']),
+  text: z.string(),
+});
+
+const transcriptSchema = z.object({
+  context: z.string(),
+  lines: z.array(transcriptLineSchema).min(1),
+});
+
+const callStatusSchema = z.enum([
+  'answering',
+  'qualifying',
+  'routing',
+  'logged',
+]);
+
+/**
+ * The visual attached to each product pillar, discriminated on `kind` so a
+ * visual can never be rendered against the wrong shape of data.
+ *
+ * Every variant depicts something Calvo actually does. `config` is the agent
+ * training state (pillar 1), `callLog` the logged calls and their outcomes
+ * (pillar 2), `voice` the conversation itself (pillar 3), `visibility` the
+ * transcript and CRM sync (pillar 4). The field names in `callLog.rows` are the
+ * ones the privacy policy already commits to: time, duration, outcome.
+ */
+const pillarVisualSchema = z.discriminatedUnion('kind', [
+  z.object({
+    kind: z.literal('config'),
+    title: z.string(),
+    statusLabel: z.string(),
+    rows: z.array(z.string()).min(1),
+  }),
+  z.object({
+    kind: z.literal('callLog'),
+    title: z.string(),
+    columns: z.tuple([z.string(), z.string(), z.string()]),
+    rows: z
+      .array(
+        z.object({
+          time: z.string(),
+          duration: z.string(),
+          outcome: z.string(),
+        }),
+      )
+      .min(1),
+    escalationNote: z.string(),
+  }),
+  z.object({
+    kind: z.literal('voice'),
+    title: z.string(),
+    waveformLabel: z.string(),
+    note: z.string(),
+  }),
+  z.object({
+    kind: z.literal('visibility'),
+    title: z.string(),
+    transcriptLabel: z.string(),
+    syncTitle: z.string(),
+    realTimeLabel: z.string(),
+    syncRows: z
+      .array(z.object({ label: z.string(), state: z.string() }))
+      .min(1),
+  }),
+]);
+
+/**
+ * Illustrative dashboard content.
+ *
+ * Everything under this key is an *example view* — never live telemetry, never
+ * a real client call. `illustrativeLabel` and `liveCall.illustrativeNote` are
+ * rendered in the frame chrome, so the visitor is told that in the UI rather
+ * than only in this comment. That is the condition on which the counter is
+ * allowed to exist at all: info.json makes no concurrency claim anywhere, so an
+ * unlabelled live counter would be inventing a metric.
+ *
+ * Scope guard: nothing resembling an inbox, a draft/approve/send step, or a
+ * multi-channel message queue belongs under this key. Calvo is inbound voice.
+ */
+const productDemoSchema = z.object({
+  frameTitle: z.string(),
+  illustrativeLabel: z.string(),
+  liveCall: z.object({
+    counterLabel: z.string(),
+    counterFrom: z.number(),
+    counterTo: z.number(),
+    illustrativeNote: z.string(),
+    durationLabel: z.string(),
+    waveformLabel: z.string(),
+    statuses: z.object({
+      answering: z.string(),
+      qualifying: z.string(),
+      routing: z.string(),
+      logged: z.string(),
+    }),
+  }),
+  callQueue: z
+    .array(
+      z.object({
+        line: z.string(),
+        status: callStatusSchema,
+        duration: z.string(),
+      }),
+    )
+    .min(1),
+  transcript: z.object({
+    eyebrow: z.string(),
+    agentLabel: z.string(),
+    callerLabel: z.string(),
+    /** Homepage. Vertical-neutral per 02-design-brief.md constraint 1. */
+    neutral: transcriptSchema,
+    /** /for-cpa-firms only — vertical language stays on the vertical page. */
+    cpa: transcriptSchema,
+  }),
+  outcome: z.object({
+    label: z.string(),
+    neutralValue: z.string(),
+    cpaValue: z.string(),
+    syncedLabel: z.string(),
+  }),
+  pillarVisuals: z.array(pillarVisualSchema).min(1),
+});
+
 const infoSchema = z.object({
   brand: z.object({
     name: z.string(),
@@ -109,6 +233,7 @@ const infoSchema = z.object({
   productPillars: z
     .array(z.object({ title: z.string(), description: z.string() }))
     .min(1),
+  productDemo: productDemoSchema,
   howItWorks: z
     .array(z.object({ step: z.string(), description: z.string() }))
     .min(1),
@@ -265,6 +390,12 @@ export type Vertical = z.infer<typeof verticalBaseSchema>;
 export type PrimaryVertical = z.infer<typeof primaryVerticalSchema>;
 export type Stat = z.infer<typeof statSchema>;
 export type Pillar = Info['productPillars'][number];
+export type ProductDemo = z.infer<typeof productDemoSchema>;
+export type PillarVisual = z.infer<typeof pillarVisualSchema>;
+export type TranscriptLine = z.infer<typeof transcriptLineSchema>;
+export type Transcript = z.infer<typeof transcriptSchema>;
+export type CallStatus = z.infer<typeof callStatusSchema>;
+export type CallQueueItem = ProductDemo['callQueue'][number];
 export type HowItWorksStep = Info['howItWorks'][number];
 
 const parsed = infoSchema.safeParse(raw);
@@ -287,6 +418,7 @@ export const site = content.site;
 export const sections = content.site.sections;
 export const cta = content.cta;
 export const contact = content.contact;
+export const productDemo = content.productDemo;
 export const legal = content.legal;
 
 /** Legal pages in footer order. */

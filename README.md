@@ -64,6 +64,56 @@ docs/                   the original brief and the two HTML motion references
 development for driving the page from devtools. `?holdLoader=1` freezes the
 preloader so it can be inspected. All three are stripped from production builds.
 
+## Product mockups
+
+`components/dashboard/` renders the dark "app view" panels — the hero live-call
+panel and the four views attached to the product pillars.
+
+**What they are allowed to show is constrained, and the constraint is the point.**
+Every element depicts a capability `content/info.json` already claims: the agent
+answers, qualifies, routes, escalates, transcribes, logs the call, and syncs to
+the CRM. The call-log columns (time, duration, outcome) are the exact fields the
+privacy policy commits to. Nothing resembling an inbox, a draft/approve/send
+step, an unread count, or a multi-channel message queue belongs in this
+directory — Calvo is inbound voice, and a mockup is a product claim.
+
+**The "example view" labels are load-bearing.** info.json makes no concurrency
+claim anywhere; the only occurrence of "simultaneously" in the file is a
+restaurant pain point about human staff. So the hero counter is labelled as
+illustrative twice — once in the frame chrome, once beside the number — and
+`AppFrame` renders that badge on every panel. Removing those labels turns an
+illustration into a fabricated live metric. If real figures ever exist, replace
+the numbers *and* the labels together.
+
+**Surfaces.** The panels carry `.surface-ink`, which re-declares the whole
+semantic token set for their subtree. That is what lets a dark product view sit
+inside a paper section without a hardcoded colour, so the ink/paper rhythm in
+`app/page.tsx` survives. Elevation comes from `--elev-1/2/3` in
+`styles/tokens.css`, shared with the pricing cards so every raised panel matches.
+
+### Three animation engines, and which owns what
+
+- **GSAP** — anything tied to scroll position: every ScrollTrigger reveal, the
+  pinned How-it-works track, the section depth choreography, and `CountUp`.
+- **Motion.dev** (`motion/react`) — component-level state: the in-view entrance
+  of transcript lines and dashboard rows, and the strike drawn across the "before"
+  figure in the proof stat.
+- **Anime.js** (`lib/anime.ts`) — self-contained timelines on their own clock
+  with a per-element stagger: the call-audio waveform.
+
+Both Motion and Anime are lazy: `lib/anime.ts` memoises a dynamic import the
+same way `lib/gsap.ts` does, and the Motion-dependent components are pulled in
+through `next/dynamic` so the runtime lands in a deferred chunk rather than the
+route's first load. Importing Motion directly cost **+44 kB** on first load;
+splitting it brought that to **+3 kB** (137 kB → 140 kB). Keep it that way — this
+site has a hard Lighthouse >= 85 requirement and LCP is already the constraint.
+
+Entrance states follow the existing contract: the hidden state is CSS, gated on
+`.anim-ready` (`[data-mock-reveal]`, `[data-strike]` in `app/globals.css`), never
+an SSR'd inline style. Verified in the production HTML — the transcript, the call
+rows and the counter's final value are all present as plain visible markup, so
+crawlers, no-JS and reduced-motion visitors get the content, not an empty frame.
+
 ## Reduced motion
 
 Not a switch on one animation — the whole layer is skipped. With
@@ -79,6 +129,7 @@ Production build, mobile emulation:
 | | |
 |---|---|
 | Lighthouse Performance | **89** (requirement: ≥ 85) |
+| | *measured before the product-mockup pass — re-run before shipping* |
 | Best Practices / SEO | 100 / 100 |
 | Accessibility | 92 → fixes applied since, re-audit after next build |
 | CLS | 0.008 |

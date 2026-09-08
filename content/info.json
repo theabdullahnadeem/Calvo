@@ -140,6 +140,173 @@
       "description": "Every call is logged, transcribed, and reportable through a dashboard your team actually checks."
     }
   ],
+  "productDemo": {
+    "_note": "Illustrative dashboard content for the marketing site. These are example conversations and example views - not real client calls, and not live telemetry. Every frame renders an 'example view' label. Each element maps to a capability claimed elsewhere in this file: answer, qualify, route, escalate, transcribe, log, and sync to CRM. Do NOT add inbox, draft/approve/send, or multi-channel message UI here - Calvo is inbound voice only.",
+    "frameTitle": "Calvo dashboard",
+    "illustrativeLabel": "Example view",
+    "liveCall": {
+      "counterLabel": "Calls in progress",
+      "counterFrom": 0,
+      "counterTo": 4,
+      "illustrativeNote": "Illustrative - not live data",
+      "durationLabel": "Duration",
+      "waveformLabel": "Call audio",
+      "statuses": {
+        "answering": "Answering",
+        "qualifying": "Qualifying",
+        "routing": "Routing",
+        "logged": "Logged"
+      }
+    },
+    "callQueue": [
+      {
+        "line": "Line 1",
+        "status": "answering",
+        "duration": "0:12"
+      },
+      {
+        "line": "Line 2",
+        "status": "qualifying",
+        "duration": "1:04"
+      },
+      {
+        "line": "Line 3",
+        "status": "routing",
+        "duration": "2:21"
+      },
+      {
+        "line": "Line 4",
+        "status": "logged",
+        "duration": "3:47"
+      }
+    ],
+    "transcript": {
+      "eyebrow": "Live transcript",
+      "agentLabel": "Calvo",
+      "callerLabel": "Caller",
+      "neutral": {
+        "context": "Inbound - first-time caller",
+        "lines": [
+          {
+            "speaker": "caller",
+            "text": "Hi - I need to talk to someone about getting set up."
+          },
+          {
+            "speaker": "agent",
+            "text": "Of course. Are you an existing client, or is this your first call with us?"
+          },
+          {
+            "speaker": "caller",
+            "text": "First time."
+          },
+          {
+            "speaker": "agent",
+            "text": "Thanks. I have your number and what you need - putting you through to the right person now."
+          }
+        ]
+      },
+      "cpa": {
+        "context": "Inbound - tax season",
+        "lines": [
+          {
+            "speaker": "caller",
+            "text": "Hi, I'm calling about my filing extension."
+          },
+          {
+            "speaker": "agent",
+            "text": "I can help with that. Are you an existing client of the firm?"
+          },
+          {
+            "speaker": "caller",
+            "text": "Yes - since 2021."
+          },
+          {
+            "speaker": "agent",
+            "text": "Thank you. Your account manager is with a client, so I'm logging this and routing it to them now."
+          }
+        ]
+      }
+    },
+    "outcome": {
+      "label": "Outcome",
+      "neutralValue": "Routed to the right person",
+      "cpaValue": "Routed to account manager",
+      "syncedLabel": "Synced to CRM"
+    },
+    "pillarVisuals": [
+      {
+        "kind": "config",
+        "title": "Agent configuration",
+        "statusLabel": "Trained",
+        "rows": [
+          "Services",
+          "Hours",
+          "Pricing logic",
+          "Escalation rules",
+          "Questions your callers ask"
+        ]
+      },
+      {
+        "kind": "callLog",
+        "title": "Call log",
+        "columns": [
+          "Time",
+          "Duration",
+          "Outcome"
+        ],
+        "rows": [
+          {
+            "time": "08:02",
+            "duration": "1:12",
+            "outcome": "Answered"
+          },
+          {
+            "time": "08:04",
+            "duration": "0:48",
+            "outcome": "Answered"
+          },
+          {
+            "time": "08:04",
+            "duration": "2:30",
+            "outcome": "Escalated"
+          },
+          {
+            "time": "08:07",
+            "duration": "1:05",
+            "outcome": "Answered"
+          }
+        ],
+        "escalationNote": "Escalated to a person when your rules say it should."
+      },
+      {
+        "kind": "voice",
+        "title": "Call audio",
+        "waveformLabel": "Natural conversation",
+        "note": "No menu tree. No hold queue."
+      },
+      {
+        "kind": "visibility",
+        "title": "Call detail",
+        "transcriptLabel": "Transcript",
+        "syncTitle": "CRM sync",
+        "realTimeLabel": "Real time",
+        "syncRows": [
+          {
+            "label": "Caller details",
+            "state": "Synced"
+          },
+          {
+            "label": "Call outcome",
+            "state": "Synced"
+          },
+          {
+            "label": "Transcript",
+            "state": "Syncing"
+          }
+        ]
+      }
+    ]
+  },
   "howItWorks": [
     {
       "step": "Tell us how your business runs",

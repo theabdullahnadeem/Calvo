@@ -7,6 +7,18 @@ import MaskedWords from '@/components/motion/MaskedWords';
 import PointerDepth from '@/components/motion/PointerDepth';
 import Magnetic from '@/components/motion/Magnetic';
 import Button from '@/components/ui/Button';
+import dynamic from 'next/dynamic';
+
+/**
+ * The panel still server-renders — the transcript has to be in the HTML for
+ * crawlers, for no-JS and for reduced motion — but its client chunk, and the
+ * Motion.dev runtime it pulls in, are split out of the route's first load.
+ * Motion in the initial bundle cost 44 kB, which the Lighthouse >= 85
+ * requirement in 02-design-brief.md has no room for.
+ */
+const LiveCallPanel = dynamic(
+  () => import('@/components/dashboard/LiveCallPanel'),
+);
 
 /**
  * Section 1 — Hero.
@@ -31,6 +43,9 @@ type HeroProps = {
   subheadline?: string;
   /** Vertical heroes point their secondary CTA at that page's own problem block. */
   secondaryHref?: string;
+  /** Which example transcript the hero panel plays. CPA language stays on
+   *  /for-cpa-firms — 02-design-brief.md keeps the homepage vertical-neutral. */
+  demoVariant?: 'neutral' | 'cpa';
 };
 
 export function Hero({
@@ -38,6 +53,7 @@ export function Hero({
   headline,
   subheadline,
   secondaryHref = '/#how-it-works',
+  demoVariant = 'neutral',
 }: HeroProps = {}) {
   const ref = useRef<HTMLElement | null>(null);
   const copy = sections.hero;
@@ -112,35 +128,46 @@ export function Hero({
           {eyebrow ?? copy.eyebrow}
         </p>
 
-        <h1
-          id="hero-heading"
-          className="intro-words my-[clamp(2.5rem,7vh,5rem)] max-w-[17ch] font-display text-step-5 font-medium tracking-display"
-        >
-          <MaskedWords text={headline ?? brand.tagline} />
-        </h1>
+        {/* Two columns from lg: the argument on the left, the product view on
+            the right. Below lg the panel stacks under the CTAs, so a phone
+            still opens on the headline and the primary action rather than on a
+            mockup. The headline steps down from --step-5 to --step-4 to make
+            room for the panel; it is still the largest type on the page. */}
+        <div className="my-[clamp(2rem,5vh,3.5rem)] grid items-center gap-y-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,27rem)] lg:gap-x-[clamp(2rem,5vw,5rem)]">
+          <div>
+            <h1
+              id="hero-heading"
+              className="intro-words max-w-[15ch] font-display text-step-4 font-medium tracking-display"
+            >
+              <MaskedWords text={headline ?? brand.tagline} />
+            </h1>
 
-        <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-          <p
-            data-intro
-            style={introDelay(0.62)}
-            className="max-w-[42ch] text-[var(--muted)] text-step-0"
-          >
-            {subheadline ?? brand.shortDescription}
-          </p>
+            <p
+              data-intro
+              style={introDelay(0.62)}
+              className="mt-8 max-w-[42ch] text-[var(--muted)] text-step-0"
+            >
+              {subheadline ?? brand.shortDescription}
+            </p>
 
-          <div
-            data-intro
-            style={introDelay(0.72)}
-            className="flex flex-wrap items-center gap-3"
-          >
-            <Magnetic>
-              <Button href="/#book-a-demo" variant="primary" size="lg">
-                {cta.primary}
+            <div
+              data-intro
+              style={introDelay(0.72)}
+              className="mt-9 flex flex-wrap items-center gap-3"
+            >
+              <Magnetic>
+                <Button href="/#book-a-demo" variant="primary" size="lg">
+                  {cta.primary}
+                </Button>
+              </Magnetic>
+              <Button href={secondaryHref} variant="ghost" size="lg">
+                {cta.secondary}
               </Button>
-            </Magnetic>
-            <Button href={secondaryHref} variant="ghost" size="lg">
-              {cta.secondary}
-            </Button>
+            </div>
+          </div>
+
+          <div data-intro style={introDelay(0.84)} className="w-full">
+            <LiveCallPanel variant={demoVariant} />
           </div>
         </div>
 
