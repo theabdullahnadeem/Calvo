@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { site } from '@/lib/content';
-import { SITE_URL } from '@/lib/constants';
+import { pageMetadata } from '@/lib/seo';
 import {
+  faqSchema,
   graph,
   organizationSchema,
   serviceSchema,
@@ -16,13 +17,14 @@ import ProductPillars from '@/components/sections/ProductPillars';
 import MarqueeBand from '@/components/sections/MarqueeBand';
 import VerticalProof from '@/components/sections/VerticalProof';
 import Pricing from '@/components/sections/Pricing';
+import Faq from '@/components/sections/Faq';
 import CTASection from '@/components/sections/CTASection';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: site.meta.titleDefault,
   description: site.meta.description,
-  alternates: { canonical: SITE_URL },
-};
+  path: '',
+});
 
 /**
  * Homepage.
@@ -45,7 +47,12 @@ export default function HomePage() {
   return (
     <>
       <JsonLd
-        data={graph(organizationSchema(), websiteSchema(), serviceSchema())}
+        data={graph(
+          organizationSchema(),
+          websiteSchema(),
+          serviceSchema(),
+          faqSchema(),
+        )}
       />
       <Hero />
       <ProblemStatement />
@@ -60,6 +67,7 @@ export default function HomePage() {
       <SectionDepth>
         <Pricing />
       </SectionDepth>
+      <Faq />
       <CTASection />
     </>
   );

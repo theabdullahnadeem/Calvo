@@ -32,8 +32,8 @@
         "metric2": "13% revenue lift"
       },
       "meta": {
-        "title": "AI Receptionist for CPA Firms | Tax Season Call Answering - Calvo",
-        "description": "Calvo is an AI receptionist and answering service for accounting firms. Handle tax season call volume without adding front desk staff - trained on your services, deadlines, and the questions clients actually ask."
+        "title": "AI Receptionist for CPA & Accounting Firms | Calvo",
+        "description": "AI answering service for accounting firms. Handle tax season call volume without adding front desk staff, trained on your services, deadlines and clients."
       },
       "hero": {
         "eyebrow": "For CPA & accounting firms",
@@ -72,8 +72,8 @@
           "Orders and reservations need accurate, fast handling"
         ],
         "meta": {
-          "title": "AI Receptionist for Restaurants | Reservation Answering Service - Calvo",
-          "description": "Calvo is an AI phone answering service for restaurants. It takes reservation and takeout order calls through the dinner rush, so your staff stay on the floor."
+          "title": "AI Answering Service for Restaurants | Calvo",
+          "description": "AI phone answering for restaurants. Calvo takes reservation and takeout calls through the dinner rush, 24/7, so your staff stay on the floor."
         },
         "hero": {
           "eyebrow": "For restaurants",
@@ -91,8 +91,8 @@
           "Similar to restaurants — high call volume during peak hours, small staff"
         ],
         "meta": {
-          "title": "AI Receptionist for Cafes | Order & Catering Call Answering - Calvo",
-          "description": "Calvo is an AI phone answering service for cafes. It handles order, opening hours, and catering enquiry calls through the morning rush, so a small team isn't answering the phone mid-pour."
+          "title": "AI Receptionist & Call Answering for Cafes | Calvo",
+          "description": "AI phone answering for cafes. Calvo handles order, opening hours and catering enquiry calls through the morning rush, so a small team is not stuck on the phone."
         },
         "hero": {
           "eyebrow": "For cafes",
@@ -110,8 +110,8 @@
           "Any business losing revenue to missed or poorly handled inbound calls"
         ],
         "meta": {
-          "title": "AI Receptionist & Virtual Answering Service for Small Business - Calvo",
-          "description": "Calvo is an AI receptionist for service businesses. It answers, qualifies, and routes every inbound call 24/7 - custom-trained on your services, hours, and pricing logic."
+          "title": "AI Receptionist for Small Business | 24/7 Answering | Calvo",
+          "description": "A virtual receptionist that never misses a call. Calvo answers, qualifies and routes every inbound call 24/7, trained on your services, hours and pricing logic."
         },
         "hero": {
           "eyebrow": "For service businesses",
@@ -473,10 +473,14 @@
     ]
   },
   "contact": {
-    "email": "hello@getcalvo.com",
+    "_note": "No email address is published on the site. hello@getcalvo.com is not a live mailbox, and a dead address in the footer, in the JSON-LD, or in a mailto: CTA sends real enquiries nowhere. The two live channels are the phone number (voice only) and WhatsApp. If a real mailbox is set up later, add it here and it will surface everywhere the other two do.",
     "phone": "+1 (480) 480-6524",
     "phoneHref": "tel:+14804806524",
-    "phoneLabel": "Call us"
+    "phoneLabel": "Call us",
+    "phoneNote": "Calls only",
+    "whatsapp": "+1 (425) 477-8523",
+    "whatsappHref": "https://wa.me/14254778523",
+    "whatsappLabel": "WhatsApp"
   },
   "brandVoice": {
     "tone": "confident, plain-spoken, no hype-speak, no exclamation points, no 'revolutionize/game-changing' language",
@@ -507,9 +511,9 @@
   },
   "site": {
     "meta": {
-      "titleDefault": "AI Receptionist & Answering Service for CPA Firms — Calvo",
+      "titleDefault": "AI Receptionist & 24/7 Answering Service | Calvo",
       "titleTemplate": "%s",
-      "description": "Calvo is an AI receptionist and answering service that answers, qualifies, and routes every inbound call. Proven with CPA firms — missed calls cut from 32% to 5%. Also works for restaurants and cafes.",
+      "description": "An AI receptionist that answers, qualifies and routes every call 24/7, trained on how your business runs. One CPA firm cut missed calls from 32% to 5%.",
       "ogAlt": "Calvo - AI calling agents, custom-trained per business.",
       "locale": "en_US"
     },
@@ -530,6 +534,10 @@
         {
           "label": "Pricing",
           "href": "/#pricing"
+        },
+        {
+          "label": "FAQ",
+          "href": "/#faq"
         }
       ],
       "industriesLabel": "Industries",
@@ -603,7 +611,7 @@
         "eyebrow": "Next step",
         "heading": "See it answer your phone.",
         "support": "A short call, a look at how your agent would handle your real callers, and a straight answer on whether Calvo fits.",
-        "emailLabel": "Or email us"
+        "whatsappLabel": "The first number takes calls. WhatsApp is the one to message."
       },
       "verticalPages": {
         "painPointsEyebrow": "The problem",
@@ -617,7 +625,7 @@
     "lastUpdatedLabel": "Last updated",
     "lastUpdated": "2 August 2026",
     "contactHeading": "Questions",
-    "contactBody": "Write to us and we will answer.",
+    "contactBody": "Reach us on either of these and we will answer.",
     "privacy": {
       "slug": "privacy",
       "navLabel": "Privacy policy",
@@ -639,7 +647,7 @@
         {
           "heading": "Information you give us",
           "body": [
-            "When you book a demo or email us, we collect your name, email address, phone number, company name, and whatever else you choose to include in your message.",
+            "When you book a demo, call us, message us on WhatsApp, or send an enquiry through the site, we collect your name, email address, phone number, company name, and whatever else you choose to include in your message.",
             "When you become a client, we collect the operational details needed to build your agent: your services, hours, pricing logic, escalation rules, and the questions your callers typically ask."
           ]
         },
@@ -700,7 +708,7 @@
           "heading": "Your rights",
           "body": [
             "Depending on where you live, you may have the right to access, correct, delete, or export your personal information, to object to or restrict processing, and to complain to a supervisory authority.",
-            "To exercise any of these, email us. If your data was processed on behalf of one of our clients, we will refer the request to that client and support them in answering it."
+            "To exercise any of these, contact us on the number or WhatsApp line published on this site. If your data was processed on behalf of one of our clients, we will refer the request to that client and support them in answering it."
           ]
         },
         {
@@ -815,15 +823,14 @@
     }
   },
   "faq": {
-    "_note": "Grounding corpus for the pre-purchase chat widget, and safe to surface as a visible FAQ later. Every answer is derived from existing site copy or the published pricing - nothing here asserts a fact the site does not already make. DRAFT: review each answer before launch, particularly overage and setup timing.",
-    "reviewNotice": "Draft answers - review before launch.",
+    "_note": "Serves two surfaces: the grounding corpus for the pre-purchase chat widget, and the visible FAQ section on the homepage (components/sections/Faq.tsx), which is also the source for the FAQPage JSON-LD in lib/schema.ts. Every answer is derived from existing site copy or the published pricing - nothing here asserts a fact the site does not already make. Questions are phrased the way people search rather than the way we would say them internally, because this is the long-tail surface. Anything added here becomes public.",
     "items": [
       {
-        "q": "What is Calvo?",
+        "q": "What is an AI receptionist?",
         "a": "Calvo is an AI receptionist and answering service. It answers your inbound calls, qualifies the caller, and routes or escalates them - trained on how your specific business runs rather than a generic script."
       },
       {
-        "q": "What does it cost?",
+        "q": "How much does an AI receptionist cost?",
         "a": "There are two products. Self-configure plans are $100/month for 150 minutes, $150/month for 250 minutes, and $200/month for 400 minutes. Managed plans, where we build and run the agent for you, are $1,000/month for 3,000 minutes (Pilot), $1,700/month for 5,600 minutes (Standard), and $2,500/month for 8,150 minutes (Pro)."
       },
       {
@@ -839,15 +846,15 @@
         "a": "The Pilot plan is a 30-day pilot with a full refund if there is no measurable improvement. What counts as measurable improvement is agreed with you up front - ask us and we will put it in writing."
       },
       {
-        "q": "How is the agent trained on my business?",
+        "q": "How is the AI receptionist trained on my business?",
         "a": "It learns your service list, your hours, your pricing logic, and the specific questions your callers actually ask. It is configured for your business alone, never a shared template, and tested against real call scenarios before it takes a live call."
       },
       {
-        "q": "Does it integrate with my CRM?",
+        "q": "Does the AI receptionist integrate with my CRM?",
         "a": "Yes. On managed plans, calls, outcomes and caller details sync to your CRM in real time, and we set the integration up and maintain it when your CRM or process changes."
       },
       {
-        "q": "Will it sound like a robot?",
+        "q": "Does an AI receptionist sound like a robot?",
         "a": "It is built for natural, low-latency conversation rather than an IVR menu - no phone trees and no 'press 1 for'."
       },
       {
@@ -855,19 +862,19 @@
         "a": "It escalates to a person, on rules you set. You decide which situations should always reach a human."
       },
       {
-        "q": "Do I get recordings and transcripts?",
+        "q": "Do I get call recordings and transcripts?",
         "a": "Yes. Every call is logged and transcribed, with outcomes and performance visible in your dashboard."
       },
       {
-        "q": "Is it available outside business hours?",
+        "q": "Can it answer calls 24/7, after hours and at weekends?",
         "a": "Yes, agents answer 24/7 regardless of call volume or time of day."
       },
       {
-        "q": "How quickly can it be live?",
+        "q": "How quickly can an AI answering service go live?",
         "a": "The Standard managed plan quotes 48-hour setup. Timing for your business depends on how much configuration it needs, so confirm it with us on a call."
       },
       {
-        "q": "What kinds of businesses use Calvo?",
+        "q": "What kinds of businesses use an AI answering service?",
         "a": "Accounting and CPA firms are where Calvo has the deepest track record. It also answers for restaurants, cafes, and general service businesses - the agent is rebuilt around each one."
       },
       {
@@ -876,11 +883,19 @@
       },
       {
         "q": "What happens if I go over my included minutes?",
-        "a": "Overage terms are set per plan and are not published on the site. I do not want to quote you a number I cannot stand behind - leave your email and someone will confirm the exact terms."
+        "a": "Overage terms are set per plan and are not published on the site. Rather than quote a number we cannot stand behind, we confirm the exact terms with you on a call before you start."
       },
       {
         "q": "Can I move between plans?",
         "a": "Yes. Self-configure plans can move up to a managed plan at any time, and the managed Pro tier is designed to be rotated back down after a peak season."
+      },
+      {
+        "q": "What is the difference between an AI receptionist and an answering service?",
+        "a": "A message-taking service writes down who called so someone can call them back. Calvo handles the call itself: it answers, qualifies the caller, and routes or escalates them on rules you set, using an agent trained on your services, hours and pricing logic. The call is resolved rather than queued."
+      },
+      {
+        "q": "Do I have to change my phone number?",
+        "a": "No. Calls are pointed at your Calvo agent, so the number your customers already have keeps working. On a managed plan we set that up for you."
       }
     ],
     "outOfScope": [
@@ -890,6 +905,9 @@
       "diagnosing an agent that is already live",
       "billing disputes, refunds, or cancellations on an existing account",
       "anything asked by someone who is already a customer"
-    ]
+    ],
+    "eyebrow": "Questions",
+    "heading": "AI receptionist questions, answered.",
+    "support": "The things people ask before they call. If yours is not here, ask the assistant in the corner or call the number below."
   }
 }

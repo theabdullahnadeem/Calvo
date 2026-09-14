@@ -43,11 +43,16 @@ export function AppFrame({ title, aside, children, className }: AppFrameProps) {
           aria-hidden="true"
           className="h-2 w-2 flex-none rounded-full bg-[var(--accent-fg)]"
         />
-        <span className="truncate font-mono text-[10px] uppercase tracking-mono text-[var(--muted)]">
+        {/* `min-w-0` is what makes `truncate` work here. A flex item's default
+            `min-width: auto` is its min-content, and `whitespace-nowrap` makes
+            that the full untruncated string — so without this the title sets a
+            floor under the whole frame and pushes it past its container on
+            narrow screens instead of ellipsing. */}
+        <span className="min-w-0 truncate font-mono text-[10px] uppercase tracking-mono text-[var(--muted)]">
           {title ?? demo.frameTitle}
         </span>
 
-        <span className="ml-auto flex items-center gap-2.5">
+        <span className="ml-auto flex flex-none items-center gap-2.5">
           {aside}
           {/* Stated in the interface, not just in a code comment. */}
           <span className="whitespace-nowrap rounded-full border border-[var(--line)] px-2.5 py-1 font-mono text-[9px] uppercase tracking-mono text-[var(--muted)]">

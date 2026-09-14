@@ -81,8 +81,15 @@ const tierSchema = z.object({
   finePrint: z.string().optional(),
 });
 
+/**
+ * Feeds three things: the chat widget's grounding corpus, the visible FAQ
+ * section, and the FAQPage JSON-LD. Because the last two are public, an answer
+ * added here is a public claim — see the `_note` in content/info.json.
+ */
 const faqSchema = z.object({
-  reviewNotice: z.string().optional(),
+  eyebrow: z.string(),
+  heading: z.string(),
+  support: z.string(),
   items: z.array(z.object({ q: z.string(), a: z.string() })).min(1),
   /** Topics the chat widget must refuse and escalate rather than answer. */
   outOfScope: z.array(z.string()).min(1),
@@ -276,12 +283,26 @@ const infoSchema = z.object({
       .length(2),
   }),
   faq: faqSchema,
+  /**
+   * Live contact channels only.
+   *
+   * There is deliberately no `email` field. A published address that nobody
+   * reads is worse than none: it absorbs enquiries silently, and in JSON-LD it
+   * is what Google hands to anyone looking for a way to reach the business.
+   * Adding one back means adding the field here and rendering it beside the
+   * other two — nothing else assumes its absence.
+   */
   contact: z.object({
-    email: z.string().email(),
+    _note: z.string(),
     /** Display form. The visible number and `phoneHref` must stay in sync. */
     phone: z.string(),
     phoneHref: z.string().startsWith('tel:'),
     phoneLabel: z.string(),
+    /** The number takes voice calls only — WhatsApp is a separate line. */
+    phoneNote: z.string(),
+    whatsapp: z.string(),
+    whatsappHref: z.string().startsWith('https://wa.me/'),
+    whatsappLabel: z.string(),
   }),
   brandVoice: z.object({
     tone: z.string(),
@@ -355,7 +376,7 @@ const infoSchema = z.object({
         eyebrow: z.string(),
         heading: z.string(),
         support: z.string(),
-        emailLabel: z.string(),
+        whatsappLabel: z.string(),
       }),
       verticalPages: z.object({
         painPointsEyebrow: z.string(),

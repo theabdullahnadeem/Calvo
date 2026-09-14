@@ -198,7 +198,7 @@ export function ChatWidget() {
                   <button
                     type="button"
                     onClick={() => send(s)}
-                    className="rounded-full border border-[var(--line)] px-3 py-1.5 text-left text-[0.82rem] text-[var(--muted)] transition-colors duration-fast hover:border-[var(--fg)] hover:text-[var(--fg)]"
+                    className="min-h-[44px] rounded-full border border-[var(--line)] px-3.5 py-2 text-left text-[0.82rem] text-[var(--muted)] transition-colors duration-fast hover:border-[var(--fg)] hover:text-[var(--fg)]"
                   >
                     {s}
                   </button>

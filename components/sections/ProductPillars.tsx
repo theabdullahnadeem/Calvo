@@ -78,8 +78,20 @@ export function ProductPillars() {
           duration={1}
           className="mt-20 grid gap-x-[clamp(2rem,5vw,5rem)] gap-y-16 sm:mt-24 md:grid-cols-2"
         >
+          {/* `min-w-0` below is load-bearing, not tidying. A grid item defaults
+              to `min-width: auto`, so the track is sized by the item's
+              min-content — and the dashboard mockup inside contains deliberately
+              non-wrapping text (the truncated transcript lines, the "example
+              view" badge). Below the `md` breakpoint there is no explicit
+              `grid-template-columns` to impose `minmax(0, 1fr)`, so that
+              min-content won: every card rendered 448px wide inside a 335px
+              column and the section's `overflow-hidden` silently cut the
+              right-hand third off on every phone. */}
           {pillars.map((pillar, i) => (
-            <li key={pillar.title} className={i % 2 === 1 ? 'md:mt-24' : ''}>
+            <li
+              key={pillar.title}
+              className={`min-w-0 ${i % 2 === 1 ? 'md:mt-24' : ''}`}
+            >
               <ParallaxLayer
                 speed={speeds[i % speeds.length]}
                 triggerSelector="#what-you-get"

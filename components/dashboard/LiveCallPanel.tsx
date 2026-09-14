@@ -87,16 +87,20 @@ export function LiveCallPanel({
             <li
               key={call.line}
               data-mock-reveal="call"
-              className="flex items-center gap-3 rounded-lg bg-[var(--panel)] px-3 py-1.5"
+              className="flex items-center gap-2.5 rounded-lg bg-[var(--panel)] px-2.5 py-1.5 sm:gap-3 sm:px-3"
             >
               <StatusDot status={call.status} />
-              <span className="font-mono text-[10px] uppercase tracking-mono text-[var(--muted)]">
+              <span className="flex-none font-mono text-[10px] uppercase tracking-mono text-[var(--muted)]">
                 {call.line}
               </span>
-              <span className="text-[0.8rem] text-[var(--fg)]">
+              {/* The status is the one part of the row that may give ground on
+                  a narrow screen — the line number and the duration are both
+                  short and fixed, so letting this truncate keeps four real
+                  columns on a 320px phone rather than blowing the frame out. */}
+              <span className="min-w-0 truncate text-[0.8rem] text-[var(--fg)]">
                 {live.statuses[call.status]}
               </span>
-              <span className="ml-auto font-mono text-[10px] text-[var(--muted)] [font-variant-numeric:tabular-nums]">
+              <span className="ml-auto flex-none font-mono text-[10px] text-[var(--muted)] [font-variant-numeric:tabular-nums]">
                 {call.duration}
               </span>
             </li>

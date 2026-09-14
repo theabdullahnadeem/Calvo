@@ -67,11 +67,22 @@ export function LegalPage({ doc }: { doc: LegalDoc }) {
           </h2>
           <p className="mt-4 text-[var(--muted)]">
             {legal.contactBody}{' '}
+            {/* A privacy policy has to name a channel that actually reaches
+                someone. Both of these do; the old address did not. */}
             <a
-              href={`mailto:${contact.email}`}
+              href={contact.phoneHref}
               className="text-[var(--fg)] underline decoration-[var(--accent-fg)] underline-offset-[5px]"
             >
-              {contact.email}
+              {contact.phone}
+            </a>{' '}
+            <span className="text-[var(--muted)]">or</span>{' '}
+            <a
+              href={contact.whatsappHref}
+              target="_blank"
+              rel="noopener"
+              className="text-[var(--fg)] underline decoration-[var(--accent-fg)] underline-offset-[5px]"
+            >
+              {contact.whatsappLabel} {contact.whatsapp}
             </a>
           </p>
         </ScrollReveal>

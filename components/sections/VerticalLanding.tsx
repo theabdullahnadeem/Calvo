@@ -1,6 +1,17 @@
 import { notFound } from 'next/navigation';
-import { content, getStatsForSlug, getVerticalBySlug } from '@/lib/content';
-import { breadcrumbSchema, graph, organizationSchema } from '@/lib/schema';
+import {
+  brand,
+  content,
+  getStatsForSlug,
+  getVerticalBySlug,
+} from '@/lib/content';
+import { SITE_URL } from '@/lib/constants';
+import {
+  breadcrumbSchema,
+  graph,
+  organizationSchema,
+  serviceSchema,
+} from '@/lib/schema';
 import JsonLd from '@/components/seo/JsonLd';
 import SectionDepth from '@/components/motion/SectionDepth';
 import Hero from '@/components/sections/Hero';
@@ -33,9 +44,21 @@ export function VerticalLanding({ slug }: { slug: string }) {
 
   return (
     <>
+      {/* Each vertical page describes its own Service node, not the
+          homepage's. These pages carry the industry language the site ranks on
+          — "answering service for accounting firms", "AI phone answering for
+          restaurants" — and previously emitted no service markup at all, so the
+          pricing and the audience were only ever machine-readable on the
+          homepage. The `@id` is per-page so the four do not collide. */}
       <JsonLd
         data={graph(
           organizationSchema(),
+          serviceSchema({
+            name: `${brand.name} AI Receptionist for ${vertical.shortName ?? vertical.name}`,
+            audienceType: vertical.name,
+            description: vertical.meta.description,
+            id: `${SITE_URL}/${vertical.slug}#service`,
+          }),
           breadcrumbSchema([
             { name: 'Home', path: '/' },
             { name: vertical.name, path: `/${vertical.slug}` },

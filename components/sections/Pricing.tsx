@@ -270,9 +270,12 @@ export function Pricing() {
               {p.customBody}
             </p>
           </div>
+          {/* Quotes happen on a call, so the quote CTA is the phone number.
+              The old `mailto:` pointed at an address nobody reads — see the
+              note on `contact` in content/info.json. */}
           <Magnetic className="flex-none">
-            <Button href={`mailto:${contact.email}`} variant="ghost" size="lg">
-              {contact.email}
+            <Button href={contact.phoneHref} variant="ghost" size="lg">
+              {contact.phoneLabel} — {contact.phone}
             </Button>
           </Magnetic>
         </ScrollReveal>

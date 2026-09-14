@@ -202,7 +202,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[0.9rem] opacity-75 transition-opacity duration-fast hover:opacity-100"
+                className="flex min-h-[44px] items-center text-[0.9rem] opacity-75 transition-opacity duration-fast hover:opacity-100"
               >
                 {link.label}
               </Link>
@@ -214,7 +214,7 @@ export function Header() {
                 aria-expanded={industriesOpen}
                 aria-haspopup="true"
                 onClick={() => setIndustriesOpen((v) => !v)}
-                className="flex items-center gap-1.5 text-[0.9rem] opacity-75 transition-opacity duration-fast hover:opacity-100"
+                className="flex min-h-[44px] items-center gap-1.5 text-[0.9rem] opacity-75 transition-opacity duration-fast hover:opacity-100"
               >
                 {site.nav.industriesLabel}
                 <svg
@@ -241,7 +241,7 @@ export function Header() {
                     <li key={vertical.slug}>
                       <Link
                         href={`/${vertical.slug}`}
-                        className="block rounded px-3 py-2.5 text-[0.9rem] transition-colors duration-fast hover:bg-[var(--panel)]"
+                        className="flex min-h-[44px] items-center rounded px-3 text-[0.9rem] transition-colors duration-fast hover:bg-[var(--panel)]"
                       >
                         {vertical.name}
                       </Link>
@@ -274,7 +274,10 @@ export function Header() {
             <button
               ref={menuButtonRef}
               type="button"
-              className="flex h-10 w-10 flex-col items-end justify-center gap-[5px] md:hidden"
+              // 44px square: the bars stay the size they were, the hit area
+              // grows to the minimum a thumb reliably lands on. The negative
+              // margin keeps the icon optically flush with the gutter.
+              className="-mr-2 flex h-11 w-11 flex-col items-center justify-center gap-[5px] md:hidden"
               aria-expanded={open}
               onClick={() => setOpen(true)}
             >
@@ -318,7 +321,7 @@ export function Header() {
               ref={closeButtonRef}
               type="button"
               onClick={closeMenu}
-              className="font-mono text-[11px] uppercase tracking-mono opacity-70"
+              className="-mr-2 inline-flex min-h-[44px] items-center rounded px-2 font-mono text-[11px] uppercase tracking-mono opacity-70"
             >
               {site.nav.menuCloseLabel}
             </button>
@@ -339,13 +342,13 @@ export function Header() {
 
             <div data-menu-tail>
               <p className="eyebrow mt-8">{site.nav.industriesLabel}</p>
-              <ul className="mt-3 flex flex-col gap-2">
+              <ul className="mt-1 flex flex-col">
                 {allVerticals.map((vertical) => (
                   <li key={vertical.slug}>
                     <Link
                       href={`/${vertical.slug}`}
                       onClick={() => setOpen(false)}
-                      className="text-[1.05rem] opacity-80"
+                      className="menu-sublink"
                     >
                       {vertical.name}
                     </Link>
