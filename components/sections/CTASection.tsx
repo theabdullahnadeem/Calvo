@@ -1,6 +1,6 @@
 'use client';
 
-import { contact, cta, sections } from '@/lib/content';
+import { contact, sections } from '@/lib/content';
 import ScrollReveal from '@/components/motion/ScrollReveal';
 import Button from '@/components/ui/Button';
 
@@ -37,27 +37,26 @@ export function CTASection() {
           {copy.support}
         </p>
 
+        {/* The phone number is the primary action here, not a fallback. This
+            section exists to produce a call, and the number is the only control
+            on the page that produces one in a single tap. `mailto:` used to sit
+            in this slot pointing at an address nobody reads — see the note on
+            `contact` in content/info.json. */}
         <div className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-5">
-          <Button href={`mailto:${contact.email}`} variant="primary" size="lg">
-            {cta.primary}
+          <Button href={contact.phoneHref} variant="primary" size="lg">
+            {contact.phoneLabel} — {contact.phone}
           </Button>
 
-          {/* Same ghost pairing as the hero — the caller who would rather just
-              dial gets an equal-weight route without a new pattern. */}
-          <Button href={contact.phoneHref} variant="ghost" size="lg">
-            {contact.phone}
+          <Button href={contact.whatsappHref} variant="ghost" size="lg">
+            {contact.whatsappLabel} — {contact.whatsapp}
           </Button>
-
-          <p className="text-[0.95rem] text-[var(--muted)]">
-            {copy.emailLabel}{' '}
-            <a
-              href={`mailto:${contact.email}`}
-              className="text-[var(--fg)] underline decoration-[var(--accent-fg)] underline-offset-[5px]"
-            >
-              {contact.email}
-            </a>
-          </p>
         </div>
+
+        {/* Two numbers, two jobs. Saying which is which here is cheaper than
+            fielding a WhatsApp message on the voice line. */}
+        <p className="mt-6 text-[0.95rem] text-[var(--muted)]">
+          {copy.whatsappLabel}
+        </p>
       </ScrollReveal>
     </section>
   );

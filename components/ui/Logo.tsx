@@ -66,7 +66,10 @@ export function Logo({
     </>
   );
 
-  const classes = `logo inline-flex items-center leading-none ${className}`;
+  // `min-h-[44px]` only affects the hit area — the mark and wordmark are
+  // vertically centred inside it and render at exactly the size they did.
+  // Without it the only link in the header is a 19px-tall tap target.
+  const classes = `logo inline-flex min-h-[44px] items-center leading-none ${className}`;
   const style = {
     ['--logo-mark-size' as string]: `${s.mark}px`,
     gap: s.gap,

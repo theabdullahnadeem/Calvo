@@ -37,7 +37,7 @@ export function OtherIndustries({ currentSlug }: { currentSlug: string }) {
             <li key={vertical.slug}>
               <Link
                 href={`/${vertical.slug}`}
-                className="group inline-flex items-baseline gap-2 font-display text-step-2 tracking-display transition-colors duration-fast hover:text-[var(--accent-fg)]"
+                className="group inline-flex min-h-[44px] items-baseline gap-2 font-display text-step-2 tracking-display transition-colors duration-fast hover:text-[var(--accent-fg)]"
               >
                 {vertical.shortName}
                 <span

@@ -10,6 +10,7 @@ import Preloader from '@/components/layout/Preloader';
 import SmoothScrollProvider from '@/components/layout/SmoothScrollProvider';
 import CustomCursor from '@/components/motion/CustomCursor';
 import ChatWidget from '@/components/chat/ChatWidget';
+import CallTracking from '@/components/analytics/CallTracking';
 
 /**
  * Self-hosted at build time by next/font — no render-blocking request to a
@@ -145,6 +146,7 @@ export default function RootLayout({
         <Footer />
 
         <ChatWidget />
+        <CallTracking />
 
         <div className="grain" aria-hidden="true" />
       </body>

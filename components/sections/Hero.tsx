@@ -133,8 +133,13 @@ export function Hero({
             still opens on the headline and the primary action rather than on a
             mockup. The headline steps down from --step-5 to --step-4 to make
             room for the panel; it is still the largest type on the page. */}
+        {/* Both children carry `min-w-0`: from `lg` the explicit
+            `minmax(0, ...)` tracks already guarantee it, but below `lg` this is
+            a single implicit column sized by min-content, and the product panel
+            has non-wrapping rows inside it. Without this the hero overflows its
+            gutter on a 320px phone. */}
         <div className="my-[clamp(2rem,5vh,3.5rem)] grid items-center gap-y-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,27rem)] lg:gap-x-[clamp(2rem,5vw,5rem)]">
-          <div>
+          <div className="min-w-0">
             <h1
               id="hero-heading"
               className="intro-words max-w-[15ch] font-display text-step-4 font-medium tracking-display"
@@ -166,7 +171,7 @@ export function Hero({
             </div>
           </div>
 
-          <div data-intro style={introDelay(0.84)} className="w-full">
+          <div data-intro style={introDelay(0.84)} className="w-full min-w-0">
             <LiveCallPanel variant={demoVariant} />
           </div>
         </div>

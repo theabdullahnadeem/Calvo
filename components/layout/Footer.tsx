@@ -24,12 +24,12 @@ export function Footer() {
             <h2 id="footer-industries" className="eyebrow eyebrow--bare">
               {f.industriesHeading}
             </h2>
-            <ul className="mt-5 flex flex-col gap-3">
+            <ul className="mt-3 flex flex-col gap-0.5">
               {allVerticals.map((vertical) => (
                 <li key={vertical.slug}>
                   <Link
                     href={`/${vertical.slug}`}
-                    className="text-[0.95rem] text-[var(--muted)] transition-colors duration-fast hover:text-[var(--fg)]"
+                    className="footer-link"
                   >
                     {vertical.name}
                   </Link>
@@ -42,13 +42,10 @@ export function Footer() {
             <h2 id="footer-company" className="eyebrow eyebrow--bare">
               {f.companyHeading}
             </h2>
-            <ul className="mt-5 flex flex-col gap-3">
+            <ul className="mt-3 flex flex-col gap-0.5">
               {site.nav.links.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-[0.95rem] text-[var(--muted)] transition-colors duration-fast hover:text-[var(--fg)]"
-                  >
+                  <Link href={link.href} className="footer-link">
                     {link.label}
                   </Link>
                 </li>
@@ -56,13 +53,10 @@ export function Footer() {
             </ul>
 
             <h2 className="eyebrow eyebrow--bare mt-8">{f.legalHeading}</h2>
-            <ul className="mt-5 flex flex-col gap-3">
+            <ul className="mt-3 flex flex-col gap-0.5">
               {legalDocs.map((doc) => (
                 <li key={doc.slug}>
-                  <Link
-                    href={`/${doc.slug}`}
-                    className="text-[0.95rem] text-[var(--muted)] transition-colors duration-fast hover:text-[var(--fg)]"
-                  >
+                  <Link href={`/${doc.slug}`} className="footer-link">
                     {doc.navLabel}
                   </Link>
                 </li>
@@ -74,16 +68,26 @@ export function Footer() {
             <h2 className="eyebrow eyebrow--bare">{f.contactHeading}</h2>
             <a
               href={contact.phoneHref}
-              className="mt-5 block w-fit font-display text-step-1 tracking-display underline-offset-[6px] hover:underline"
+              className="mt-3 -mx-2 flex min-h-[44px] w-fit items-center rounded px-2 font-display text-step-1 tracking-display underline-offset-[6px] hover:underline"
             >
               {contact.phone}
             </a>
+            <p className="px-0 font-mono text-[10px] uppercase tracking-mono text-[var(--muted)]">
+              {contact.phoneNote}
+            </p>
+            {/* WhatsApp, not email. The published address was never a live
+                mailbox — see the note on `contact` in content/info.json. */}
             <a
-              href={`mailto:${contact.email}`}
-              className="mt-2 block w-fit font-display text-step-1 tracking-display underline-offset-[6px] hover:underline"
+              href={contact.whatsappHref}
+              target="_blank"
+              rel="noopener"
+              className="mt-1 -mx-2 flex min-h-[44px] w-fit items-center rounded px-2 font-display text-step-1 tracking-display underline-offset-[6px] hover:underline"
             >
-              {contact.email}
+              {contact.whatsapp}
             </a>
+            <p className="font-mono text-[10px] uppercase tracking-mono text-[var(--muted)]">
+              {contact.whatsappLabel}
+            </p>
             <p className="mt-6 text-[0.85rem] text-[var(--muted)]">
               {f.formerNameLine}
             </p>
@@ -96,7 +100,7 @@ export function Footer() {
           </p>
           <a
             href="#main"
-            className="font-mono text-[10px] uppercase tracking-mono transition-colors duration-fast hover:text-[var(--fg)]"
+            className="-mx-2 inline-flex w-fit items-center rounded px-2 min-h-[44px] font-mono text-[10px] uppercase tracking-mono transition-colors duration-fast hover:text-[var(--fg)]"
           >
             {f.backToTop}
           </a>

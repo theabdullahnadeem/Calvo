@@ -421,6 +421,44 @@
     }
   }
 
+  /* ---------- touch targets ----------
+     Every one of these is a text link whose visual size is its line box — 19px
+     for the footer, 20px in the mobile menu. That is roughly 40% of the 44px
+     minimum a thumb needs, which on a phone means mis-taps on the industry
+     pages and the legal links.
+
+     The fix is padding, not type size: the negative inline margin pulls the box
+     back so the text still sits flush on the same optical left edge it did
+     before, and only the hit area grows. Nothing here changes the desktop
+     layout — a pointer was never the problem. */
+  .footer-link {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    margin-inline: -0.5rem;
+    padding-inline: 0.5rem;
+    border-radius: 3px;
+    font-size: 0.95rem;
+    color: var(--muted);
+    transition: color var(--dur-fast) var(--ease-out-expo);
+  }
+  .footer-link:hover {
+    color: var(--fg);
+  }
+
+  /* Same treatment for the mobile menu's secondary list. The primary menu links
+     are display-sized already and need nothing. */
+  .menu-sublink {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    margin-inline: -0.5rem;
+    padding-inline: 0.5rem;
+    border-radius: 3px;
+    font-size: 1.05rem;
+    opacity: 0.8;
+  }
+
   /* ---------- eyebrow / mono label ---------- */
   .eyebrow {
     font-family: var(--font-mono), ui-monospace, monospace;

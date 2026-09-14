@@ -18,6 +18,11 @@ type ButtonProps = {
 
 const BASE =
   'group relative inline-flex items-center justify-center gap-2 font-body font-medium ' +
+  // 44px is the floor a thumb reliably lands on. The padded variants clear it
+  // on their own at default type sizes, but the header overrides padding with
+  // `!px-5 !py-2.5` and the `link` variant has no padding at all, so the floor
+  // is declared here rather than left to whatever each caller happens to set.
+  'min-h-[44px] ' +
   'transition-[transform,background-color,color,border-color] duration-fast ease-out-expo ' +
   'will-change-transform hover:-translate-y-[2px] active:translate-y-0 ' +
   'motion-reduce:transform-none motion-reduce:transition-none';
@@ -77,10 +82,19 @@ export function Button({
   );
 
   if (href) {
-    const external = href.startsWith('http') || href.startsWith('mailto:');
+    const offsite = href.startsWith('http');
+    const external = offsite || href.startsWith('mailto:') || href.startsWith('tel:');
     if (external) {
       return (
-        <a href={href} className={classes} onClick={onClick}>
+        <a
+          href={href}
+          className={classes}
+          onClick={onClick}
+          // Only a real off-site destination opens in a new tab. `tel:` and
+          // `mailto:` hand off to the OS and must stay in the same tab, or the
+          // visitor is left staring at a blank one after the dialer opens.
+          {...(offsite ? { target: '_blank', rel: 'noopener' } : null)}
+        >
           {content}
         </a>
       );
